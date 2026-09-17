@@ -59,18 +59,85 @@ a{color:inherit}
 @media (max-width:700px){.masthead nav{display:none}}
 
 /* detection frame */
-.detect{position:relative;display:inline-block;padding:clamp(1.5rem,4vw,2.75rem) clamp(1.25rem,4vw,3rem)}
-.detect .bracket{position:absolute;width:clamp(20px,4vw,38px);height:clamp(20px,4vw,38px);border:2.5px solid var(--signal)}
+.detect{position:relative;display:inline-block;padding:clamp(1.5rem,4vw,2.75rem) clamp(1.25rem,4vw,3rem);filter:drop-shadow(0 6px 10px rgba(23,35,31,.10))}
+.detect .bracket{position:absolute;width:clamp(20px,4vw,38px);height:clamp(20px,4vw,38px);border:2.5px solid var(--signal);border-radius:1.5px;box-shadow:1.5px 2px 0 rgba(23,35,31,.16),inset 0 1px 0 rgba(255,255,255,.55)}
 .detect .tl{top:0;left:0;border-right:0;border-bottom:0}
 .detect .tr{top:0;right:0;border-left:0;border-bottom:0}
 .detect .bl{bottom:0;left:0;border-right:0;border-top:0}
 .detect .br{bottom:0;right:0;border-left:0;border-top:0}
-.classlabel{position:absolute;top:-1.55rem;left:-2px;background:var(--signal);color:#fff;font-family:var(--display);font-weight:600;font-size:.75rem;padding:.18rem .55rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.classlabel{position:absolute;top:-1.55rem;left:-2px;background:linear-gradient(155deg,color-mix(in srgb,var(--signal) 100%,white 8%),var(--signal) 65%);color:#fff;font-family:var(--display);font-weight:600;font-size:.75rem;padding:.18rem .55rem;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 5px rgba(193,26,82,.35),0 1px 0 rgba(255,255,255,.25) inset;border-radius:1.5px 3px 3px 1.5px}
 
 /* hero */
 .hero{padding-block:clamp(3.5rem,10vw,7.5rem) var(--bay)}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:clamp(1.5rem,6vw,4rem);flex-wrap:wrap}
 .hero-frame{margin-bottom:2.25rem}
-.hero h1{font-size:clamp(2.9rem,12vw,6.75rem);font-weight:800;letter-spacing:-0.045em;line-height:.92}
+
+/* ============================================================
+   3D ornaments — shared engine
+   .scene   sets size + perspective (each instance sets --size)
+   .rig     gets a scroll-driven tilt; JS writes --tiltx/--tilty
+   the shape inside .rig spins continuously via CSS, paused
+   automatically when the visitor has reduced motion on
+   ============================================================ */
+.scene{width:var(--size,64px);height:var(--size,64px);perspective:calc(var(--size,64px) * 4.5);flex:none;pointer-events:none}
+.rig{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(var(--tiltx,0deg)) rotateY(var(--tilty,0deg));will-change:transform}
+
+/* -- shape: cube (a detection bounding-volume) -- */
+.scene--cube{--size:clamp(120px,15vw,190px)}
+.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.cube .face{position:absolute;inset:0;border:1.25px solid var(--rule);background:color-mix(in srgb,var(--panel) 82%,transparent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.cube .front{border-color:var(--signal);background:color-mix(in srgb,var(--signal) 6%,var(--panel) 84%);transform:translateZ(calc(var(--size) / 2))}
+.cube .back{transform:rotateY(180deg) translateZ(calc(var(--size) / 2))}
+.cube .right{border-color:var(--pine);transform:rotateY(90deg) translateZ(calc(var(--size) / 2))}
+.cube .left{transform:rotateY(-90deg) translateZ(calc(var(--size) / 2))}
+.cube .top{transform:rotateX(90deg) translateZ(calc(var(--size) / 2))}
+.cube .bottom{transform:rotateX(-90deg) translateZ(calc(var(--size) / 2))}
+.cube .tag{position:absolute;top:-1.35rem;left:-1px;background:var(--signal);color:#fff;font-family:var(--display);font-weight:600;font-size:.6875rem;padding:.14rem .4rem;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 5px rgba(193,26,82,.3)}
+.cube .pip{position:absolute;width:6px;height:6px;background:var(--signal);border-radius:50%;box-shadow:0 0 0 3px color-mix(in srgb,var(--signal) 18%,transparent)}
+.cube .front .pip{top:-3px;left:-3px}
+.cube.wire .face{background:transparent;border-color:rgba(255,255,255,.3);box-shadow:none}
+.cube.wire .front{border-color:var(--signal)}
+@media (prefers-reduced-motion:no-preference){.cube{animation:spinCube 26s linear infinite}}
+@keyframes spinCube{from{transform:rotateX(-20deg) rotateY(0deg)}to{transform:rotateX(-20deg) rotateY(360deg)}}
+
+/* -- shape: hexagonal prism (a sensor/nut-like accent) -- */
+.scene--hex{--size:58px}
+.hex{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.hex .face{position:absolute;width:calc(var(--size) * .62);height:calc(var(--size) * .55);left:calc(var(--size) * .19);top:calc(var(--size) * .225);border:1.25px solid var(--rule);background:color-mix(in srgb,var(--panel) 78%,transparent)}
+.hex .f0{border-color:var(--pine);transform:rotateY(0deg) translateZ(calc(var(--size) * .3))}
+.hex .f1{transform:rotateY(60deg) translateZ(calc(var(--size) * .3))}
+.hex .f2{transform:rotateY(120deg) translateZ(calc(var(--size) * .3))}
+.hex .f3{border-color:var(--signal);transform:rotateY(180deg) translateZ(calc(var(--size) * .3))}
+.hex .f4{transform:rotateY(240deg) translateZ(calc(var(--size) * .3))}
+.hex .f5{transform:rotateY(300deg) translateZ(calc(var(--size) * .3))}
+@media (prefers-reduced-motion:no-preference){.hex{animation:spinHex 20s linear infinite}}
+@keyframes spinHex{from{transform:rotateX(-12deg) rotateY(0deg)}to{transform:rotateX(-12deg) rotateY(360deg)}}
+
+/* -- shape: gyroscope rings (three orbits on independent axes) -- */
+.scene--gyro{--size:58px}
+.gyro{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.gyro .wrap{position:absolute;inset:0;transform-style:preserve-3d}
+.gyro .w1{transform:rotateX(72deg)}
+.gyro .w2{transform:rotateY(68deg) rotateX(12deg)}
+.gyro .w3{transform:rotateX(30deg) rotateY(48deg)}
+.gyro .ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--c,var(--ink))}
+.gyro .ring::after{content:"";position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:var(--c,var(--ink));box-shadow:0 0 0 3px color-mix(in srgb,var(--c,var(--ink)) 20%,transparent)}
+.gyro .w1 .ring{--c:var(--signal)}
+.gyro .w2 .ring{--c:var(--pine)}
+.gyro .w3 .ring{--c:var(--ink)}
+@media (prefers-reduced-motion:no-preference){
+  .gyro .w1 .ring{animation:spinZ 6.5s linear infinite}
+  .gyro .w2 .ring{animation:spinZ 9s linear infinite reverse}
+  .gyro .w3 .ring{animation:spinZ 11.5s linear infinite}
+}
+@keyframes spinZ{from{transform:rotateZ(0deg)}to{transform:rotateZ(360deg)}}
+
+@media (max-width:640px){.scene--cube{display:none}}
+@media (max-width:560px){.scene--hex,.scene--gyro{display:none}}
+@media (max-width:480px){.scene--wire{display:none}}
+@media (prefers-reduced-motion:reduce){.rig{transform:none !important}}
+.hero h1{font-size:clamp(2.1rem,8.4vw,4.75rem);font-weight:800;letter-spacing:-0.045em;line-height:.92;white-space:nowrap}
+@media (max-width:420px){.hero h1{white-space:normal}}
 .hero .role{font-family:var(--display);font-weight:500;font-size:clamp(1.05rem,3.2vw,1.6rem);color:var(--pine);margin-top:.55rem;letter-spacing:-0.012em}
 .hero p.lede{font-size:clamp(1.125rem,2.6vw,1.375rem);line-height:1.55;max-width:38ch;margin:0 0 2.25rem}
 .hero p.lede em{font-style:normal;box-shadow:inset 0 -.5em 0 color-mix(in srgb,var(--signal) 14%,transparent)}
@@ -99,6 +166,7 @@ a{color:inherit}
 /* section heads */
 .bay{padding-block:var(--bay)}
 .bay-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:clamp(2rem,4vw,3rem)}
+.bay-head .scene{align-self:center}
 .bay-head h2{font-size:clamp(1.75rem,4.5vw,2.6rem);font-weight:700;letter-spacing:-0.035em}
 .bay-head .hair{flex:1;height:1px;background:var(--rule);transform:translateY(-.35em)}
 .bay-head .count{font-family:var(--display);font-size:.8125rem;font-weight:600;color:var(--signal);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -155,9 +223,12 @@ a{color:inherit}
 .ledger .item a{font-family:var(--display);font-size:.8125rem;font-weight:600;text-decoration:none;box-shadow:inset 0 -1.5px 0 var(--signal);display:inline-block;margin-top:.3rem}
 .ledger .item a:hover{background:var(--signal);color:#fff;box-shadow:none}
 
+.scene--wire{--size:76px}
+
 /* close */
 .close{background:var(--ink);color:var(--ground);border-top:3px solid var(--signal)}
 .close .shell{padding-block:var(--bay)}
+.close-top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
 .close h2{font-size:clamp(1.9rem,6vw,3.4rem);letter-spacing:-0.04em;max-width:16ch}
 .close p{max-width:46ch;color:#BEC8C0;margin:1.1rem 0 2.25rem;font-size:1.125rem}
 .close .btn{border-color:var(--ground);color:var(--ground)}
@@ -204,12 +275,27 @@ a{color:inherit}
 <main id="main">
 
 <section class="hero shell" id="top">
-  <div class="hero-frame detect">
-    <span class="classlabel">ai/ml engineer &nbsp;0.98</span>
-    <span class="bracket tl"></span><span class="bracket tr"></span>
-    <span class="bracket bl"></span><span class="bracket br"></span>
-    <h1>Parth<br>Joshi</h1>
-    <p class="role">Agentic AI, LLM systems, computer vision</p>
+  <div class="hero-top">
+    <div class="hero-frame detect">
+      <span class="classlabel">ai/ml engineer &nbsp;0.98</span>
+      <span class="bracket tl"></span><span class="bracket tr"></span>
+      <span class="bracket bl"></span><span class="bracket br"></span>
+      <h1>Parth Joshi</h1>
+      <p class="role">Agentic AI, LLM systems, computer vision</p>
+    </div>
+
+    <div class="scene scene--cube" aria-hidden="true">
+      <div class="rig" data-amp="12">
+        <div class="cube">
+          <div class="face front"><span class="pip"></span><span class="tag">0.94</span></div>
+          <div class="face back"></div>
+          <div class="face right"></div>
+          <div class="face left"></div>
+          <div class="face top"></div>
+          <div class="face bottom"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <p class="lede">Software engineer at Cygnet.One. I ship <em>AI agents that do real work</em> — invoice classification, enterprise data querying, autonomous testing — plus the data pipelines and vision models underneath them.</p>
@@ -242,6 +328,18 @@ a{color:inherit}
   <div class="bay-head">
     <h2>Experience</h2>
     <span class="hair"></span>
+    <div class="scene scene--hex" aria-hidden="true">
+      <div class="rig" data-amp="10">
+        <div class="hex">
+          <div class="face f0"></div>
+          <div class="face f1"></div>
+          <div class="face f2"></div>
+          <div class="face f3"></div>
+          <div class="face f4"></div>
+          <div class="face f5"></div>
+        </div>
+      </div>
+    </div>
     <span class="count">4 roles</span>
   </div>
 
@@ -415,6 +513,15 @@ a{color:inherit}
   <div class="bay-head">
     <h2>Skills</h2>
     <span class="hair"></span>
+    <div class="scene scene--gyro" aria-hidden="true">
+      <div class="rig" data-amp="8">
+        <div class="gyro">
+          <div class="wrap w1"><div class="ring"></div></div>
+          <div class="wrap w2"><div class="ring"></div></div>
+          <div class="wrap w3"><div class="ring"></div></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="kit">
@@ -501,7 +608,21 @@ a{color:inherit}
 
 <footer class="close" id="contact">
   <div class="shell">
-    <h2>Let's talk</h2>
+    <div class="close-top">
+      <h2>Let's talk</h2>
+      <div class="scene scene--wire" aria-hidden="true">
+        <div class="rig" data-amp="10">
+          <div class="cube wire">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face right"></div>
+            <div class="face left"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>Based in Ahmedabad, working on agentic AI at Cygnet.One. Happy to discuss LLM systems, data engineering or computer vision work — I reply to email the same day.</p>
     <div class="actions">
       <a class="btn primary" href="mailto:parthjoshi2416@gmail.com">parthjoshi2416@gmail.com</a>
@@ -543,6 +664,36 @@ a{color:inherit}
       apply(chip.getAttribute('data-area'));
     });
   });
+})();
+
+(function(){
+  var rigs = Array.prototype.slice.call(document.querySelectorAll('.rig'));
+  if (!rigs.length) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return; // spins are already paused via CSS; skip the scroll-tilt too
+
+  var ticking = false;
+  function update(){
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    rigs.forEach(function(rig){
+      var rect = rig.getBoundingClientRect();
+      var center = rect.top + rect.height / 2;
+      var progress = (vh / 2 - center) / (vh / 2); // ~ -1 .. 1 as it passes the viewport
+      progress = Math.max(-1.3, Math.min(1.3, progress));
+      var amp = parseFloat(rig.getAttribute('data-amp')) || 10;
+      rig.style.setProperty('--tilty', (progress * amp) + 'deg');
+      rig.style.setProperty('--tiltx', (progress * amp * 0.5) + 'deg');
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, {passive:true});
+  window.addEventListener('resize', update);
+  update();
 })();
 </script>
 
