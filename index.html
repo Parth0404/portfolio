@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parth Joshi — AI/ML Engineer</title>
+<meta name="description" content="Software engineer at Cygnet.One building agentic AI, LLM systems, data pipelines and computer vision. Ahmedabad, India.">
+<meta name="author" content="Parth Joshi">
+<meta property="og:title" content="Parth Joshi — AI/ML Engineer">
+<meta property="og:description" content="Agentic AI, LLM systems, data pipelines and computer vision. Ahmedabad, India.">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E6EAE3'/%3E%3Cpath d='M7 12V7h5M25 12V7h-5M7 20v5h5M25 20v5h-5' fill='none' stroke='%23C11A52' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,500;12..96,75..100,600;12..96,75..100,700;12..96,75..100,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#E6EAE3;
+  --panel:#F3F5F0;
+  --ink:#17231F;
+  --muted:#55645B;
+  --rule:#C3CCBC;
+  --signal:#C11A52;
+  --pine:#2E6B5E;
+
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --prose:"Newsreader",Georgia,"Times New Roman",serif;
+
+  --measure:66ch;
+  --gutter:clamp(1.25rem,5vw,4.5rem);
+  --bay:clamp(3.5rem,9vw,7rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--prose);font-size:1.0625rem;line-height:1.6;
+  font-optical-sizing:auto;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.05;letter-spacing:-0.022em;margin:0}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--signal);outline-offset:3px;border-radius:1px}
+
+.shell{max-width:1120px;margin:0 auto;padding-inline:var(--gutter)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--ground);padding:.6rem 1rem;font-family:var(--display);z-index:50}
+.skip:focus{left:.75rem;top:.75rem}
+
+/* masthead */
+.masthead{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.masthead .shell{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:3.75rem}
+.wordmark{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-0.01em;text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.wordmark::before{content:"";width:.5rem;height:.5rem;background:var(--signal);flex:none}
+.masthead nav{display:flex;gap:1.5rem;font-family:var(--display);font-size:.875rem;font-weight:500}
+.masthead nav a{text-decoration:none;color:var(--muted);padding-block:.25rem}
+.masthead nav a:hover{color:var(--ink);box-shadow:inset 0 -1.5px 0 var(--signal)}
+@media (max-width:700px){.masthead nav{display:none}}
+
+/* detection frame */
+.detect{position:relative;display:inline-block;padding:clamp(1.5rem,4vw,2.75rem) clamp(1.25rem,4vw,3rem)}
+.detect .bracket{position:absolute;width:clamp(20px,4vw,38px);height:clamp(20px,4vw,38px);border:2.5px solid var(--signal)}
+.detect .tl{top:0;left:0;border-right:0;border-bottom:0}
+.detect .tr{top:0;right:0;border-left:0;border-bottom:0}
+.detect .bl{bottom:0;left:0;border-right:0;border-top:0}
+.detect .br{bottom:0;right:0;border-left:0;border-top:0}
+.classlabel{position:absolute;top:-1.55rem;left:-2px;background:var(--signal);color:#fff;font-family:var(--display);font-weight:600;font-size:.75rem;padding:.18rem .55rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{padding-block:clamp(3.5rem,10vw,7.5rem) var(--bay)}
+.hero-frame{margin-bottom:2.25rem}
+.hero h1{font-size:clamp(2.9rem,12vw,6.75rem);font-weight:800;letter-spacing:-0.045em;line-height:.92}
+.hero .role{font-family:var(--display);font-weight:500;font-size:clamp(1.05rem,3.2vw,1.6rem);color:var(--pine);margin-top:.55rem;letter-spacing:-0.012em}
+.hero p.lede{font-size:clamp(1.125rem,2.6vw,1.375rem);line-height:1.55;max-width:38ch;margin:0 0 2.25rem}
+.hero p.lede em{font-style:normal;box-shadow:inset 0 -.5em 0 color-mix(in srgb,var(--signal) 14%,transparent)}
+
+.actions{display:flex;flex-wrap:wrap;gap:.6rem}
+.btn{font-family:var(--display);font-weight:600;font-size:.9375rem;text-decoration:none;padding:.72rem 1.15rem;border:1.5px solid var(--ink);display:inline-flex;align-items:center;gap:.5rem;transition:background .15s ease,color .15s ease}
+.btn:hover{background:var(--ink);color:var(--ground)}
+.btn.primary{background:var(--signal);border-color:var(--signal);color:#fff}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn svg{width:1em;height:1em;flex:none}
+
+/* evidence band */
+.band{border-block:1px solid var(--rule);background:var(--panel)}
+.band .shell{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:clamp(1.5rem,3.5vw,2.25rem) 1.25rem clamp(1.5rem,3.5vw,2.25rem) clamp(1rem,2.5vw,1.75rem);border-left:1px solid var(--rule)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,4vw,2.3rem);letter-spacing:-0.035em;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{display:block;font-family:var(--display);font-size:.8125rem;font-weight:500;color:var(--muted);margin-top:.5rem;line-height:1.35}
+@media (max-width:760px){
+  .band .shell{grid-template-columns:1fr 1fr}
+  .stat:nth-child(odd){border-left:0;padding-left:0}
+  .stat:nth-child(-n+2){padding-bottom:1.1rem}
+  .stat:nth-child(n+3){padding-top:1.1rem;border-top:1px solid var(--rule)}
+}
+
+/* section heads */
+.bay{padding-block:var(--bay)}
+.bay-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:clamp(2rem,4vw,3rem)}
+.bay-head h2{font-size:clamp(1.75rem,4.5vw,2.6rem);font-weight:700;letter-spacing:-0.035em}
+.bay-head .hair{flex:1;height:1px;background:var(--rule);transform:translateY(-.35em)}
+.bay-head .count{font-family:var(--display);font-size:.8125rem;font-weight:600;color:var(--signal);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* experience */
+.track{list-style:none;margin:0;padding:0;position:relative}
+.track::before{content:"";position:absolute;left:5px;top:.7rem;bottom:.7rem;width:1.5px;background:var(--rule)}
+.post{position:relative;padding-left:clamp(1.9rem,4vw,2.75rem);padding-bottom:clamp(2.1rem,4.5vw,3rem)}
+.post:last-child{padding-bottom:0}
+.post::before{content:"";position:absolute;left:0;top:.62rem;width:11px;height:11px;background:var(--ground);border:2.5px solid var(--pine)}
+.post.now::before{background:var(--signal);border-color:var(--signal)}
+.post .when{font-family:var(--display);font-size:.8125rem;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.post h3{font-size:clamp(1.2rem,2.8vw,1.5rem);margin-top:.3rem}
+.post .org{font-family:var(--display);font-size:.9375rem;font-weight:500;color:var(--pine);margin-top:.2rem}
+.post p.scope{margin:.85rem 0 0;max-width:var(--measure)}
+
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:clamp(1.5rem,3.5vw,2.25rem)}
+.chip{font-family:var(--display);font-weight:600;font-size:.84375rem;padding:.45rem .85rem;border:1.5px solid var(--rule);background:transparent;color:var(--muted);cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+
+.works{display:grid;gap:clamp(1rem,2.5vw,1.5rem);grid-template-columns:repeat(auto-fill,minmax(min(100%,20.5rem),1fr))}
+.work{position:relative;background:var(--panel);border:1px solid var(--rule);padding:clamp(1.3rem,2.8vw,1.75rem);display:flex;flex-direction:column}
+.work[hidden]{display:none}
+.work .corner{position:absolute;width:13px;height:13px;border:2px solid var(--pine)}
+.work .c1{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.work .c2{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.work .meta{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-family:var(--display);font-size:.78125rem;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.work .meta .who{color:var(--pine)}
+.work h3{font-size:1.1875rem;margin-top:.55rem;letter-spacing:-0.025em}
+.work p{margin:.75rem 0 0;font-size:1rem}
+.work .metric{display:inline-block;margin-top:.85rem;font-family:var(--display);font-weight:700;font-size:.84375rem;color:var(--signal);border-left:2.5px solid var(--signal);padding-left:.5rem;font-variant-numeric:tabular-nums}
+.work .foot{margin-top:auto;padding-top:1.1rem}
+.tools{display:flex;flex-wrap:wrap;gap:.28rem .32rem}
+.tool{font-family:var(--display);font-size:.71875rem;font-weight:500;color:var(--muted);border:1px solid var(--rule);padding:.15rem .42rem;background:var(--ground)}
+.srclink{display:inline-block;margin-top:.7rem;font-family:var(--display);font-size:.84375rem;font-weight:600;text-decoration:none;box-shadow:inset 0 -1.5px 0 var(--signal);padding-bottom:1px}
+.srclink:hover{background:var(--signal);color:#fff;box-shadow:none}
+
+/* skills */
+.kit{display:grid;border-top:1px solid var(--rule)}
+.kit-row{display:grid;grid-template-columns:minmax(10rem,14rem) 1fr;gap:clamp(.75rem,3vw,2.5rem);padding-block:clamp(1.05rem,2.4vw,1.5rem);border-bottom:1px solid var(--rule)}
+.kit-row h3{font-size:1rem;font-weight:600;color:var(--pine);letter-spacing:-0.01em}
+.kit-row p{margin:0;max-width:var(--measure)}
+@media (max-width:640px){.kit-row{grid-template-columns:1fr;gap:.4rem}}
+
+/* background */
+.ledger{display:grid;gap:clamp(2rem,5vw,4rem);grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))}
+.ledger h3{font-family:var(--display);font-size:.875rem;font-weight:600;color:var(--signal);margin-bottom:1rem}
+.ledger .item{padding-block:.85rem;border-top:1px solid var(--rule)}
+.ledger .item:first-of-type{border-top:1.5px solid var(--ink)}
+.ledger .item b{font-family:var(--display);font-weight:600;font-size:1.03125rem;display:block;letter-spacing:-0.012em}
+.ledger .item span{display:block;color:var(--muted);font-size:.9375rem;margin-top:.15rem}
+.ledger .item a{font-family:var(--display);font-size:.8125rem;font-weight:600;text-decoration:none;box-shadow:inset 0 -1.5px 0 var(--signal);display:inline-block;margin-top:.3rem}
+.ledger .item a:hover{background:var(--signal);color:#fff;box-shadow:none}
+
+/* close */
+.close{background:var(--ink);color:var(--ground);border-top:3px solid var(--signal)}
+.close .shell{padding-block:var(--bay)}
+.close h2{font-size:clamp(1.9rem,6vw,3.4rem);letter-spacing:-0.04em;max-width:16ch}
+.close p{max-width:46ch;color:#BEC8C0;margin:1.1rem 0 2.25rem;font-size:1.125rem}
+.close .btn{border-color:var(--ground);color:var(--ground)}
+.close .btn:hover{background:var(--ground);color:var(--ink)}
+.close .btn.primary{background:var(--signal);border-color:var(--signal);color:#fff}
+.close .btn.primary:hover{background:var(--ground);border-color:var(--ground);color:var(--ink)}
+.colophon{border-top:1px solid #33433C;margin-top:clamp(3rem,7vw,5rem);padding-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;font-family:var(--display);font-size:.8125rem;color:#8D9A92}
+.colophon a{color:#BEC8C0;text-decoration:none}
+.colophon a:hover{color:#fff}
+
+/* the one orchestrated moment */
+@media (prefers-reduced-motion:no-preference){
+  .detect .bracket{opacity:0;animation:snap .5s cubic-bezier(.2,.8,.3,1) forwards}
+  .detect .tl{animation-delay:.12s}
+  .detect .tr{animation-delay:.2s}
+  .detect .bl{animation-delay:.28s}
+  .detect .br{animation-delay:.36s}
+  .hero .classlabel{opacity:0;animation:tab .4s ease .55s forwards}
+  .hero h1,.hero .role{opacity:0;animation:settle .6s ease .22s forwards}
+  .hero .role{animation-delay:.32s}
+  @keyframes snap{from{opacity:0;transform:scale(1.5)}to{opacity:1;transform:scale(1)}}
+  @keyframes tab{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  @keyframes settle{from{opacity:0}to{opacity:1}}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell">
+    <a class="wordmark" href="#top">Parth Joshi</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="resume.pdf" download="Parth-Joshi-Resume.pdf">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero shell" id="top">
+  <div class="hero-frame detect">
+    <span class="classlabel">ai/ml engineer &nbsp;0.98</span>
+    <span class="bracket tl"></span><span class="bracket tr"></span>
+    <span class="bracket bl"></span><span class="bracket br"></span>
+    <h1>Parth<br>Joshi</h1>
+    <p class="role">Agentic AI, LLM systems, computer vision</p>
+  </div>
+
+  <p class="lede">Software engineer at Cygnet.One. I ship <em>AI agents that do real work</em> — invoice classification, enterprise data querying, autonomous testing — plus the data pipelines and vision models underneath them.</p>
+
+  <div class="actions">
+    <a class="btn primary" href="mailto:parthjoshi2416@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16"/><path d="m2 6 10 7L22 6"/></svg>
+      Email me
+    </a>
+    <a class="btn" href="resume.pdf" download="Parth-Joshi-Resume.pdf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+      Resume
+    </a>
+    <a class="btn" href="https://www.linkedin.com/in/parth-joshi4" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/Parth0404" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="tel:+917778923074">+91 77789 23074</a>
+  </div>
+</section>
+
+<section class="band" aria-label="Selected results">
+  <div class="shell">
+    <div class="stat"><b>98.5%</b><span>mAP@50 re-identifying 134 individual crocodiles</span></div>
+    <div class="stat"><b>90%</b><span>accuracy classifying RCM and ITC eligible invoices</span></div>
+    <div class="stat"><b>1.5M+</b><span>rows of tax data analysed across 250+ columns</span></div>
+    <div class="stat"><b>40%</b><span>faster QA from an autonomous testing agent</span></div>
+  </div>
+</section>
+
+<section class="bay shell" id="experience">
+  <div class="bay-head">
+    <h2>Experience</h2>
+    <span class="hair"></span>
+    <span class="count">4 roles</span>
+  </div>
+
+  <ol class="track">
+    <li class="post now">
+      <p class="when">Jul 2026 — Present</p>
+      <h3>Software Engineer</h3>
+      <p class="org">Cygnet.One · Ahmedabad</p>
+      <p class="scope">Building agentic systems for tax and advisory products — invoice eligibility classification on AWS Bedrock, and a multi-agent advisory assistant inside a client benchmarking platform.</p>
+    </li>
+
+    <li class="post">
+      <p class="when">Jul 2025 — Jun 2026</p>
+      <h3>Associate AI/ML Engineer</h3>
+      <p class="org">Cygnet.One · Ahmedabad</p>
+      <p class="scope">Took conversational AI over enterprise data lakes from prototype to production, built an autonomous test-generation agent, and ran large-scale tax analytics for executive reporting.</p>
+    </li>
+
+    <li class="post">
+      <p class="when">Jan 2025 — Jun 2025</p>
+      <h3>Data Science Intern</h3>
+      <p class="org">Cygnet.One · Ahmedabad</p>
+      <p class="scope">Automated HR document processing and built the marketing ETL stack joining CRM, web analytics and campaign data into Superset dashboards.</p>
+    </li>
+
+    <li class="post">
+      <p class="when">Apr 2024 — Jul 2024</p>
+      <h3>Research Intern</h3>
+      <p class="org">Ahmedabad University</p>
+      <p class="scope">Wildlife re-identification from UAV imagery under Prof. Mehul Raval and Prof. Ratna Ghosal, training detection models on the Param Shavak supercomputer.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="bay shell" id="projects">
+  <div class="bay-head">
+    <h2>Projects</h2>
+    <span class="hair"></span>
+    <span class="count" id="tally">13 projects</span>
+  </div>
+
+  <div class="filters" role="group" aria-label="Filter projects by area">
+    <button class="chip" type="button" data-area="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-area="agents" aria-pressed="false">Agents &amp; LLMs</button>
+    <button class="chip" type="button" data-area="data" aria-pressed="false">Data &amp; analytics</button>
+    <button class="chip" type="button" data-area="vision" aria-pressed="false">Computer vision</button>
+  </div>
+
+  <div class="works" id="works">
+
+    <article class="work" data-area="agents">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2026</span></p>
+      <h3>RCM &amp; ITC invoice classification</h3>
+      <p>Decides whether an invoice is eligible under Reverse Charge Mechanism or Input Tax Credit, combining deterministic rule logic with agentic refinement so edge cases get reasoned about instead of dropped.</p>
+      <span class="metric">90% classification accuracy</span>
+      <div class="foot"><div class="tools"><span class="tool">Claude Opus</span><span class="tool">AWS Bedrock</span><span class="tool">boto3</span><span class="tool">Python</span><span class="tool">Agentic workflows</span></div></div>
+    </article>
+
+    <article class="work" data-area="agents">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2026</span></p>
+      <h3>Business advisory assistant</h3>
+      <p>A multi-agent system inside a client benchmarking platform. Orchestrated SWOT, TOWS and recommendation agents turn raw business diagnostic data into structured strategy reports.</p>
+      <div class="foot"><div class="tools"><span class="tool">Azure AI Foundry</span><span class="tool">Copilot Studio</span><span class="tool">LangChain</span><span class="tool">RAG</span><span class="tool">Python</span></div></div>
+    </article>
+
+    <article class="work" data-area="agents">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
+      <h3>Enterprise data assistant</h3>
+      <p>Production conversational AI that lets enterprise customers query product data lakes in plain English, using semantic search to ground answers in the right slice of the lake.</p>
+      <div class="foot"><div class="tools"><span class="tool">AWS Bedrock</span><span class="tool">Strands Agents</span><span class="tool">LangChain</span><span class="tool">Semantic search</span><span class="tool">Python</span></div></div>
+    </article>
+
+    <article class="work" data-area="agents data">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
+      <h3>Any-database chat analyst</h3>
+      <p>Point it at a connection string and ask a question. The agent inspects the schema, writes the query, and returns a table or a chart — database-agnostic, so it works against whatever the client already runs.</p>
+      <div class="foot"><div class="tools"><span class="tool">Strands Agent</span><span class="tool">FastAPI</span><span class="tool">Vega-Lite</span><span class="tool">React</span><span class="tool">Docker</span></div></div>
+    </article>
+
+    <article class="work" data-area="agents">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
+      <h3>AI test automation agent</h3>
+      <p>An autonomous agent that reads the application state, decides what to exercise next, and generates the test actions — driven by a micro-LLM rather than hand-written scripts.</p>
+      <span class="metric">40% faster test cycles</span>
+      <div class="foot"><div class="tools"><span class="tool">Python</span><span class="tool">Playwright</span><span class="tool">Hugging Face</span><span class="tool">Micro-LLM</span><span class="tool">Selenium</span></div></div>
+    </article>
+
+    <article class="work" data-area="agents data">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
+      <h3>Skill matrix chatbot</h3>
+      <p>Natural-language questions about the Sales and HR skill matrix, translated into SQL using schema metadata and vector matching so the model picks the right tables before it writes a query.</p>
+      <div class="foot"><div class="tools"><span class="tool">Flask</span><span class="tool">OpenAI</span><span class="tool">React</span><span class="tool">Postgres</span><span class="tool">MSSQL</span><span class="tool">Vector DB</span><span class="tool">Docker</span></div></div>
+    </article>
+
+    <article class="work" data-area="agents">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
+      <h3>Candidate-to-role matching agents</h3>
+      <p>A CrewAI crew that reads skills out of resumes, reads requirements out of project briefs, and proposes which people fit which roles.</p>
+      <div class="foot"><div class="tools"><span class="tool">CrewAI</span><span class="tool">Gemini API</span><span class="tool">Python</span></div></div>
+    </article>
+
+    <article class="work" data-area="agents data">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
+      <h3>AI resume parser</h3>
+      <p>Converts incoming PDF resumes into one structured format for the HR workflow, so recruiters stop retyping candidate details by hand.</p>
+      <span class="metric">90% less HR processing time</span>
+      <div class="foot"><div class="tools"><span class="tool">MERN</span><span class="tool">Flask</span><span class="tool">OpenAI API</span><span class="tool">Docker</span></div></div>
+    </article>
+
+    <article class="work" data-area="data">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
+      <h3>Tax data analytics dashboard</h3>
+      <p>Analysis across 1.5M+ rows and 250+ columns of tax data, reduced to the KPIs executives actually act on and delivered as a reporting dashboard.</p>
+      <span class="metric">1.5M+ rows · 250+ columns</span>
+      <div class="foot"><div class="tools"><span class="tool">KNIME</span><span class="tool">Python</span><span class="tool">Excel</span></div></div>
+    </article>
+
+    <article class="work" data-area="data">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
+      <h3>Marketing analytics ETL pipeline</h3>
+      <p>ETL joining CRM records, web analytics, email campaigns and outbound data into one model, feeding interactive dashboards that break performance down by region.</p>
+      <div class="foot"><div class="tools"><span class="tool">Zoho CRM</span><span class="tool">GA4</span><span class="tool">Zoho Campaigns</span><span class="tool">Smartlead</span><span class="tool">KNIME</span><span class="tool">Superset</span><span class="tool">SQL</span></div></div>
+    </article>
+
+    <article class="work" data-area="vision">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Ahmedabad University</span><span>2024</span></p>
+      <h3>Crocodile re-identification from UAV imagery</h3>
+      <p>Telling 134 individual free-ranging mugger crocodiles apart from more than 400GB of drone footage — annotation redesign, YOLOv8 training, and 700K+ images processed over CLI on the Param Shavak supercomputer.</p>
+      <span class="metric">98.5% mAP@50</span>
+      <div class="foot"><div class="tools"><span class="tool">YOLOv8</span><span class="tool">OpenCV</span><span class="tool">Python</span><span class="tool">HPC / Linux CLI</span></div></div>
+    </article>
+
+    <article class="work" data-area="vision">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Self-initiated</span><span>2024</span></p>
+      <h3>VisDrone multi-object tracking</h3>
+      <p>Detection and tracking across 10,000+ VisDrone images and 10 object classes, pairing YOLOv8 with ByteTrack. Hyperparameter tuning and augmentation kept identities stable through occlusion.</p>
+      <div class="foot">
+        <div class="tools"><span class="tool">YOLOv8</span><span class="tool">ByteTrack</span><span class="tool">SuperVision</span><span class="tool">Python</span></div>
+        <a class="srclink" href="https://github.com/Parth0404/VisDrone" target="_blank" rel="noopener">Source on GitHub</a>
+      </div>
+    </article>
+
+    <article class="work" data-area="vision">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <p class="meta"><span class="who">Ahmedabad University</span><span>2024</span></p>
+      <h3>Hard &amp; momentary stop detection</h3>
+      <p>A Random Forest classifier over drone-captured vehicle trajectories that flags hard stops and momentary stops, then extends to classifying moving vehicles and extracting trajectory features.</p>
+      <span class="metric">94% accuracy</span>
+      <div class="foot">
+        <div class="tools"><span class="tool">Random Forest</span><span class="tool">OpenCV</span><span class="tool">Pandas</span><span class="tool">NumPy</span></div>
+        <a class="srclink" href="https://github.com/ksv1112/ML_2024_Project-5_The_Data_Detectives" target="_blank" rel="noopener">Source on GitHub</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="bay shell" id="skills">
+  <div class="bay-head">
+    <h2>Skills</h2>
+    <span class="hair"></span>
+  </div>
+
+  <div class="kit">
+    <div class="kit-row">
+      <h3>Languages</h3>
+      <p>Python, SQL, JavaScript, HTML/CSS, LaTeX.</p>
+    </div>
+    <div class="kit-row">
+      <h3>AI &amp; agents</h3>
+      <p>LangChain, CrewAI, Strands Agents, Google ADK, Azure AI Foundry, Microsoft Copilot Studio, Hugging Face Transformers, vector databases, RAG, LLMs including Claude, OpenAI and Gemini.</p>
+    </div>
+    <div class="kit-row">
+      <h3>ML &amp; computer vision</h3>
+      <p>PyTorch, TensorFlow, scikit-learn, OpenCV, YOLOv8, ByteTrack, Pandas, NumPy, model evaluation and hyperparameter tuning.</p>
+    </div>
+    <div class="kit-row">
+      <h3>Data &amp; analytics</h3>
+      <p>KNIME, Apache Superset, ETL pipeline design, data visualisation, Google Analytics 4, Excel.</p>
+    </div>
+    <div class="kit-row">
+      <h3>Cloud &amp; databases</h3>
+      <p>AWS and AWS Bedrock, Azure, Oracle Cloud Infrastructure, PostgreSQL, MSSQL, MongoDB.</p>
+    </div>
+    <div class="kit-row">
+      <h3>Engineering</h3>
+      <p>FastAPI, Flask, React, Docker, Git and GitHub, Linux/CLI, Playwright, Selenium, Zoho CRM.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bay shell" id="background">
+  <div class="bay-head">
+    <h2>Background</h2>
+    <span class="hair"></span>
+  </div>
+
+  <div class="ledger">
+    <div>
+      <h3>Education</h3>
+      <div class="item">
+        <b>B.Tech, Computer Science &amp; Engineering</b>
+        <span>Ahmedabad University · Aug 2021 — May 2025</span>
+      </div>
+      <div class="item">
+        <b>200+ problems solved on LeetCode</b>
+        <span>Including a 100 Days badge</span>
+        <a href="https://leetcode.com/u/parthjoshi2416/" target="_blank" rel="noopener">View profile</a>
+      </div>
+    </div>
+
+    <div>
+      <h3>Certifications</h3>
+      <div class="item">
+        <b>Claude Certified Architect — Foundations</b>
+        <span>Anthropic</span>
+      </div>
+      <div class="item">
+        <b>AWS Certified AI Practitioner</b>
+        <span>Amazon Web Services</span>
+        <a href="https://www.credly.com/badges/7d829f9f-b6c2-427a-a8a5-bcd850035756" target="_blank" rel="noopener">Verify on Credly</a>
+      </div>
+      <div class="item">
+        <b>OCI 2025 Data Science Professional</b>
+        <span>Oracle Cloud Infrastructure</span>
+      </div>
+      <div class="item">
+        <b>OCI 2025 Generative AI Professional</b>
+        <span>Oracle Cloud Infrastructure</span>
+      </div>
+      <div class="item">
+        <b>KNIME L2 Analytics Platform</b>
+        <span>KNIME</span>
+      </div>
+      <div class="item">
+        <b>Introduction to TensorFlow for AI, ML and Deep Learning</b>
+        <span>DeepLearning.AI on Coursera</span>
+        <a href="https://coursera.org/share/5fbafad447e75c7039272c390ed574c4" target="_blank" rel="noopener">Verify on Coursera</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="close" id="contact">
+  <div class="shell">
+    <h2>Let's talk</h2>
+    <p>Based in Ahmedabad, working on agentic AI at Cygnet.One. Happy to discuss LLM systems, data engineering or computer vision work — I reply to email the same day.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:parthjoshi2416@gmail.com">parthjoshi2416@gmail.com</a>
+      <a class="btn" href="tel:+917778923074">+91 77789 23074</a>
+      <a class="btn" href="resume.pdf" download="Parth-Joshi-Resume.pdf">Download resume</a>
+      <a class="btn" href="https://www.linkedin.com/in/parth-joshi4" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Parth0404" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <div class="colophon">
+      <span>Parth Joshi — Ahmedabad, Gujarat, India</span>
+      <span><a href="mailto:parthjoshi2416@gmail.com">parthjoshi2416@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#works .work'));
+  var tally = document.getElementById('tally');
+
+  function apply(area){
+    var shown = 0;
+    cards.forEach(function(card){
+      var areas = (card.getAttribute('data-area') || '').split(' ');
+      var match = area === 'all' || areas.indexOf(area) !== -1;
+      card.hidden = !match;
+      if (match) shown++;
+    });
+    chips.forEach(function(chip){
+      chip.setAttribute('aria-pressed', String(chip.getAttribute('data-area') === area));
+    });
+    tally.textContent = shown + (shown === 1 ? ' project' : ' projects');
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      apply(chip.getAttribute('data-area'));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
