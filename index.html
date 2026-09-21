@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +69,10 @@ a{color:inherit}
 .classlabel{position:absolute;top:-1.55rem;left:-2px;background:linear-gradient(155deg,color-mix(in srgb,var(--signal) 100%,white 8%),var(--signal) 65%);color:#fff;font-family:var(--display);font-weight:600;font-size:.75rem;padding:.18rem .55rem;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 5px rgba(193,26,82,.35),0 1px 0 rgba(255,255,255,.25) inset;border-radius:1.5px 3px 3px 1.5px}
 
 /* hero */
+.hero-wrap{position:relative;overflow:hidden;isolation:isolate}
+#scene-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.hero-wrap::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,transparent 35%,var(--ground) 92%);pointer-events:none}
+.hero-wrap .hero{position:relative;z-index:1}
 .hero{padding-block:clamp(3.5rem,10vw,7.5rem) var(--bay)}
 .hero-top{display:flex;align-items:center;justify-content:space-between;gap:clamp(1.5rem,6vw,4rem);flex-wrap:wrap}
 .hero-frame{margin-bottom:2.25rem}
@@ -143,7 +148,7 @@ a{color:inherit}
 .hero p.lede em{font-style:normal;box-shadow:inset 0 -.5em 0 color-mix(in srgb,var(--signal) 14%,transparent)}
 
 .actions{display:flex;flex-wrap:wrap;gap:.6rem}
-.btn{font-family:var(--display);font-weight:600;font-size:.9375rem;text-decoration:none;padding:.72rem 1.15rem;border:1.5px solid var(--ink);display:inline-flex;align-items:center;gap:.5rem;transition:background .15s ease,color .15s ease}
+.btn{font-family:var(--display);font-weight:600;font-size:.9375rem;text-decoration:none;padding:.72rem 1.15rem;border:1.5px solid var(--ink);display:inline-flex;align-items:center;gap:.5rem;transition:background .15s ease,color .15s ease,transform .15s ease-out}
 .btn:hover{background:var(--ink);color:var(--ground)}
 .btn.primary{background:var(--signal);border-color:var(--signal);color:#fff}
 .btn.primary:hover{background:var(--ink);border-color:var(--ink)}
@@ -162,6 +167,19 @@ a{color:inherit}
   .stat:nth-child(-n+2){padding-bottom:1.1rem}
   .stat:nth-child(n+3){padding-top:1.1rem;border-top:1px solid var(--rule)}
 }
+
+/* impact / why-me */
+.impact-grid{display:grid;gap:clamp(1rem,2.5vw,1.5rem);grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr))}
+.impact-grid .work{gap:.25rem}
+.impact-grid .work b{font-family:var(--display);font-size:1.0625rem;font-weight:700;letter-spacing:-0.02em;line-height:1.25}
+.impact-grid .work p{margin-top:.65rem}
+
+/* case-study rows inside a project card */
+.cs{margin:.85rem 0 0;padding:0;display:grid;gap:.5rem}
+.cs-row{display:grid;grid-template-columns:5.75rem 1fr;gap:.6rem;margin:0}
+.cs-row dt{font-family:var(--display);font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--pine);margin:0;padding-top:.15rem}
+.cs-row dd{margin:0;font-size:.95rem}
+@media (max-width:480px){.cs-row{grid-template-columns:1fr;gap:.15rem}}
 
 /* section heads */
 .bay{padding-block:var(--bay)}
@@ -201,6 +219,10 @@ a{color:inherit}
 .work p{margin:.75rem 0 0;font-size:1rem}
 .work .metric{display:inline-block;margin-top:.85rem;font-family:var(--display);font-weight:700;font-size:.84375rem;color:var(--signal);border-left:2.5px solid var(--signal);padding-left:.5rem;font-variant-numeric:tabular-nums}
 .work .foot{margin-top:auto;padding-top:1.1rem}
+.work{overflow:hidden}
+.work::after{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--glow-x,50%) var(--glow-y,50%),color-mix(in srgb,var(--signal) 14%,transparent),transparent 70%);opacity:0;transition:opacity .35s ease;pointer-events:none}
+.work:hover::after{opacity:1}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.work{transform-style:preserve-3d;will-change:transform}}
 .tools{display:flex;flex-wrap:wrap;gap:.28rem .32rem}
 .tool{font-family:var(--display);font-size:.71875rem;font-weight:500;color:var(--muted);border:1px solid var(--rule);padding:.15rem .42rem;background:var(--ground)}
 .srclink{display:inline-block;margin-top:.7rem;font-family:var(--display);font-size:.84375rem;font-weight:600;text-decoration:none;box-shadow:inset 0 -1.5px 0 var(--signal);padding-bottom:1px}
@@ -239,6 +261,18 @@ a{color:inherit}
 .colophon a{color:#BEC8C0;text-decoration:none}
 .colophon a:hover{color:#fff}
 
+/* custom cursor */
+html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor .chip{cursor:none}
+.cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:60;border-radius:50%;transform:translate(-50%,-50%);will-change:transform}
+.cur-dot{width:6px;height:6px;background:var(--signal)}
+.cur-ring{width:34px;height:34px;border:1.5px solid color-mix(in srgb,var(--ink) 55%,transparent);transition:width .18s ease,height .18s ease,border-color .18s ease,background .18s ease}
+.cur-ring.active{width:52px;height:52px;border-color:var(--signal);background:color-mix(in srgb,var(--signal) 10%,transparent)}
+@media (hover:none),(pointer:coarse){.cur-dot,.cur-ring{display:none}}
+
+/* scroll reveal (progressive enhancement — only engages once GSAP confirms it's ready) */
+html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
+@media (prefers-reduced-motion:reduce){html.gsap-ready .reveal{opacity:1;transform:none}}
+
 /* the one orchestrated moment */
 @media (prefers-reduced-motion:no-preference){
   .detect .bracket{opacity:0;animation:snap .5s cubic-bezier(.2,.8,.3,1) forwards}
@@ -257,12 +291,16 @@ a{color:inherit}
 </head>
 <body>
 
+<div class="cur-ring" aria-hidden="true"></div>
+<div class="cur-dot" aria-hidden="true"></div>
+
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="shell">
     <a class="wordmark" href="#top">Parth Joshi</a>
     <nav aria-label="Sections">
+      <a href="#why">Why me</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
@@ -274,7 +312,9 @@ a{color:inherit}
 
 <main id="main">
 
-<section class="hero shell" id="top">
+<section class="hero-wrap" id="top">
+<canvas id="scene-canvas" aria-hidden="true"></canvas>
+<div class="hero shell">
   <div class="hero-top">
     <div class="hero-frame detect">
       <span class="classlabel">ai/ml engineer &nbsp;0.98</span>
@@ -313,6 +353,7 @@ a{color:inherit}
     <a class="btn" href="https://github.com/Parth0404" target="_blank" rel="noopener">GitHub</a>
     <a class="btn" href="tel:+917778923074">+91 77789 23074</a>
   </div>
+</div>
 </section>
 
 <section class="band" aria-label="Selected results">
@@ -324,8 +365,38 @@ a{color:inherit}
   </div>
 </section>
 
+<section class="bay shell" id="why">
+  <div class="bay-head reveal">
+    <h2>Why work with me</h2>
+    <span class="hair"></span>
+  </div>
+
+  <div class="impact-grid">
+    <div class="work reveal">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <b>Ships to production, not demos</b>
+      <p>Every project below is live, not a notebook — invoice decisions running on AWS Bedrock, a conversational assistant answering real customer queries against production data lakes, an agent driving QA cycles inside Cygnet.One's own product.</p>
+    </div>
+    <div class="work reveal">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <b>Full-stack across the AI surface</b>
+      <p>Agentic systems, data engineering, and computer vision in one person — most teams need three hires to cover what I've shipped: LLM agents, ETL pipelines feeding executive dashboards, and YOLOv8 models trained on HPC clusters.</p>
+    </div>
+    <div class="work reveal">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <b>Not locked into one vendor</b>
+      <p>Certified AWS AI Practitioner, OCI Data Science &amp; Generative AI Professional, and Claude Certified Architect (Anthropic) — I've shipped production work on AWS Bedrock, Azure AI Foundry and OCI, so I pick the right stack, not the familiar one.</p>
+    </div>
+    <div class="work reveal">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <b>Outcomes over activity</b>
+      <p>90% invoice-classification accuracy, 40% faster QA cycles, 98.5% mAP@50 on wildlife re-identification, 1.5M+ rows of tax data turned into executive KPIs — every project below ships with a number attached, not just a description.</p>
+    </div>
+  </div>
+</section>
+
 <section class="bay shell" id="experience">
-  <div class="bay-head">
+  <div class="bay-head reveal">
     <h2>Experience</h2>
     <span class="hair"></span>
     <div class="scene scene--hex" aria-hidden="true">
@@ -344,28 +415,28 @@ a{color:inherit}
   </div>
 
   <ol class="track">
-    <li class="post now">
+    <li class="post now reveal">
       <p class="when">Jul 2026 — Present</p>
       <h3>Software Engineer</h3>
       <p class="org">Cygnet.One · Ahmedabad</p>
       <p class="scope">Building agentic systems for tax and advisory products — invoice eligibility classification on AWS Bedrock, and a multi-agent advisory assistant inside a client benchmarking platform.</p>
     </li>
 
-    <li class="post">
+    <li class="post reveal">
       <p class="when">Jul 2025 — Jun 2026</p>
       <h3>Associate AI/ML Engineer</h3>
       <p class="org">Cygnet.One · Ahmedabad</p>
       <p class="scope">Took conversational AI over enterprise data lakes from prototype to production, built an autonomous test-generation agent, and ran large-scale tax analytics for executive reporting.</p>
     </li>
 
-    <li class="post">
+    <li class="post reveal">
       <p class="when">Jan 2025 — Jun 2025</p>
       <h3>Data Science Intern</h3>
       <p class="org">Cygnet.One · Ahmedabad</p>
       <p class="scope">Automated HR document processing and built the marketing ETL stack joining CRM, web analytics and campaign data into Superset dashboards.</p>
     </li>
 
-    <li class="post">
+    <li class="post reveal">
       <p class="when">Apr 2024 — Jul 2024</p>
       <h3>Research Intern</h3>
       <p class="org">Ahmedabad University</p>
@@ -375,7 +446,7 @@ a{color:inherit}
 </section>
 
 <section class="bay shell" id="projects">
-  <div class="bay-head">
+  <div class="bay-head reveal">
     <h2>Projects</h2>
     <span class="hair"></span>
     <span class="count" id="tally">13 projects</span>
@@ -390,32 +461,44 @@ a{color:inherit}
 
   <div class="works" id="works">
 
-    <article class="work" data-area="agents">
+    <article class="work reveal" data-area="agents">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2026</span></p>
       <h3>RCM &amp; ITC invoice classification</h3>
-      <p>Decides whether an invoice is eligible under Reverse Charge Mechanism or Input Tax Credit, combining deterministic rule logic with agentic refinement so edge cases get reasoned about instead of dropped.</p>
+      <dl class="cs">
+        <div class="cs-row"><dt>Problem</dt><dd>Finance teams were manually deciding whether each invoice qualified under Reverse Charge Mechanism or Input Tax Credit — slow, and inconsistent at volume.</dd></div>
+        <div class="cs-row"><dt>Approach</dt><dd>Combined deterministic rule logic for clear-cut cases with an agentic layer on AWS Bedrock that reasons through ambiguous invoices instead of dropping them for manual review.</dd></div>
+        <div class="cs-row"><dt>Result</dt><dd>90% classification accuracy in production, cutting the manual review queue for the finance team.</dd></div>
+      </dl>
       <span class="metric">90% classification accuracy</span>
       <div class="foot"><div class="tools"><span class="tool">Claude Opus</span><span class="tool">AWS Bedrock</span><span class="tool">boto3</span><span class="tool">Python</span><span class="tool">Agentic workflows</span></div></div>
     </article>
 
-    <article class="work" data-area="agents">
+    <article class="work reveal" data-area="agents">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2026</span></p>
       <h3>Business advisory assistant</h3>
-      <p>A multi-agent system inside a client benchmarking platform. Orchestrated SWOT, TOWS and recommendation agents turn raw business diagnostic data into structured strategy reports.</p>
+      <dl class="cs">
+        <div class="cs-row"><dt>Problem</dt><dd>A client benchmarking platform produced raw diagnostic data but had no way to turn it into an actionable strategy report without a human consultant.</dd></div>
+        <div class="cs-row"><dt>Approach</dt><dd>Built a multi-agent pipeline — orchestrated SWOT, TOWS and recommendation agents on Azure AI Foundry, each grounded with RAG over the client's own diagnostic data.</dd></div>
+        <div class="cs-row"><dt>Result</dt><dd>Structured, consultant-quality strategy reports generated automatically from raw diagnostic inputs.</dd></div>
+      </dl>
       <div class="foot"><div class="tools"><span class="tool">Azure AI Foundry</span><span class="tool">Copilot Studio</span><span class="tool">LangChain</span><span class="tool">RAG</span><span class="tool">Python</span></div></div>
     </article>
 
-    <article class="work" data-area="agents">
+    <article class="work reveal" data-area="agents">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
       <h3>Enterprise data assistant</h3>
-      <p>Production conversational AI that lets enterprise customers query product data lakes in plain English, using semantic search to ground answers in the right slice of the lake.</p>
+      <dl class="cs">
+        <div class="cs-row"><dt>Problem</dt><dd>Enterprise customers needed answers from large product data lakes but had no SQL or BI skills to query them directly.</dd></div>
+        <div class="cs-row"><dt>Approach</dt><dd>Built a production conversational agent on AWS Bedrock with Strands Agents, using semantic search to ground each answer in the correct slice of the lake.</dd></div>
+        <div class="cs-row"><dt>Result</dt><dd>Shipped to production — customers now query data lakes in plain English instead of filing analyst requests.</dd></div>
+      </dl>
       <div class="foot"><div class="tools"><span class="tool">AWS Bedrock</span><span class="tool">Strands Agents</span><span class="tool">LangChain</span><span class="tool">Semantic search</span><span class="tool">Python</span></div></div>
     </article>
 
-    <article class="work" data-area="agents data">
+    <article class="work reveal" data-area="agents data">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
       <h3>Any-database chat analyst</h3>
@@ -423,16 +506,20 @@ a{color:inherit}
       <div class="foot"><div class="tools"><span class="tool">Strands Agent</span><span class="tool">FastAPI</span><span class="tool">Vega-Lite</span><span class="tool">React</span><span class="tool">Docker</span></div></div>
     </article>
 
-    <article class="work" data-area="agents">
+    <article class="work reveal" data-area="agents">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
       <h3>AI test automation agent</h3>
-      <p>An autonomous agent that reads the application state, decides what to exercise next, and generates the test actions — driven by a micro-LLM rather than hand-written scripts.</p>
+      <dl class="cs">
+        <div class="cs-row"><dt>Problem</dt><dd>Manual QA cycles were slow, and testers had to hand-write a new script for every application state they wanted covered.</dd></div>
+        <div class="cs-row"><dt>Approach</dt><dd>Built an autonomous agent, driven by a micro-LLM, that reads the live application state and decides what to exercise next — replacing hand-written Playwright/Selenium scripts.</dd></div>
+        <div class="cs-row"><dt>Result</dt><dd>40% faster QA cycles for the team.</dd></div>
+      </dl>
       <span class="metric">40% faster test cycles</span>
       <div class="foot"><div class="tools"><span class="tool">Python</span><span class="tool">Playwright</span><span class="tool">Hugging Face</span><span class="tool">Micro-LLM</span><span class="tool">Selenium</span></div></div>
     </article>
 
-    <article class="work" data-area="agents data">
+    <article class="work reveal" data-area="agents data">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
       <h3>Skill matrix chatbot</h3>
@@ -440,7 +527,7 @@ a{color:inherit}
       <div class="foot"><div class="tools"><span class="tool">Flask</span><span class="tool">OpenAI</span><span class="tool">React</span><span class="tool">Postgres</span><span class="tool">MSSQL</span><span class="tool">Vector DB</span><span class="tool">Docker</span></div></div>
     </article>
 
-    <article class="work" data-area="agents">
+    <article class="work reveal" data-area="agents">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
       <h3>Candidate-to-role matching agents</h3>
@@ -448,7 +535,7 @@ a{color:inherit}
       <div class="foot"><div class="tools"><span class="tool">CrewAI</span><span class="tool">Gemini API</span><span class="tool">Python</span></div></div>
     </article>
 
-    <article class="work" data-area="agents data">
+    <article class="work reveal" data-area="agents data">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
       <h3>AI resume parser</h3>
@@ -457,7 +544,7 @@ a{color:inherit}
       <div class="foot"><div class="tools"><span class="tool">MERN</span><span class="tool">Flask</span><span class="tool">OpenAI API</span><span class="tool">Docker</span></div></div>
     </article>
 
-    <article class="work" data-area="data">
+    <article class="work reveal" data-area="data">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025—26</span></p>
       <h3>Tax data analytics dashboard</h3>
@@ -466,7 +553,7 @@ a{color:inherit}
       <div class="foot"><div class="tools"><span class="tool">KNIME</span><span class="tool">Python</span><span class="tool">Excel</span></div></div>
     </article>
 
-    <article class="work" data-area="data">
+    <article class="work reveal" data-area="data">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Cygnet.One</span><span>2025</span></p>
       <h3>Marketing analytics ETL pipeline</h3>
@@ -474,16 +561,20 @@ a{color:inherit}
       <div class="foot"><div class="tools"><span class="tool">Zoho CRM</span><span class="tool">GA4</span><span class="tool">Zoho Campaigns</span><span class="tool">Smartlead</span><span class="tool">KNIME</span><span class="tool">Superset</span><span class="tool">SQL</span></div></div>
     </article>
 
-    <article class="work" data-area="vision">
+    <article class="work reveal" data-area="vision">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Ahmedabad University</span><span>2024</span></p>
       <h3>Crocodile re-identification from UAV imagery</h3>
-      <p>Telling 134 individual free-ranging mugger crocodiles apart from more than 400GB of drone footage — annotation redesign, YOLOv8 training, and 700K+ images processed over CLI on the Param Shavak supercomputer.</p>
+      <dl class="cs">
+        <div class="cs-row"><dt>Problem</dt><dd>Ecologists needed to tell 134 individual free-ranging mugger crocodiles apart across more than 400GB of drone footage — infeasible to do by hand.</dd></div>
+        <div class="cs-row"><dt>Approach</dt><dd>Redesigned the annotation pipeline, trained YOLOv8 detection models, and processed 700K+ frames over CLI on the Param Shavak supercomputer.</dd></div>
+        <div class="cs-row"><dt>Result</dt><dd>98.5% mAP@50 re-identification accuracy, supporting Ahmedabad University's wildlife ecology research.</dd></div>
+      </dl>
       <span class="metric">98.5% mAP@50</span>
       <div class="foot"><div class="tools"><span class="tool">YOLOv8</span><span class="tool">OpenCV</span><span class="tool">Python</span><span class="tool">HPC / Linux CLI</span></div></div>
     </article>
 
-    <article class="work" data-area="vision">
+    <article class="work reveal" data-area="vision">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Self-initiated</span><span>2024</span></p>
       <h3>VisDrone multi-object tracking</h3>
@@ -494,7 +585,7 @@ a{color:inherit}
       </div>
     </article>
 
-    <article class="work" data-area="vision">
+    <article class="work reveal" data-area="vision">
       <span class="corner c1"></span><span class="corner c2"></span>
       <p class="meta"><span class="who">Ahmedabad University</span><span>2024</span></p>
       <h3>Hard &amp; momentary stop detection</h3>
@@ -510,7 +601,7 @@ a{color:inherit}
 </section>
 
 <section class="bay shell" id="skills">
-  <div class="bay-head">
+  <div class="bay-head reveal">
     <h2>Skills</h2>
     <span class="hair"></span>
     <div class="scene scene--gyro" aria-hidden="true">
@@ -525,27 +616,27 @@ a{color:inherit}
   </div>
 
   <div class="kit">
-    <div class="kit-row">
+    <div class="kit-row reveal">
       <h3>Languages</h3>
       <p>Python, SQL, JavaScript, HTML/CSS, LaTeX.</p>
     </div>
-    <div class="kit-row">
+    <div class="kit-row reveal">
       <h3>AI &amp; agents</h3>
       <p>LangChain, CrewAI, Strands Agents, Google ADK, Azure AI Foundry, Microsoft Copilot Studio, Hugging Face Transformers, vector databases, RAG, LLMs including Claude, OpenAI and Gemini.</p>
     </div>
-    <div class="kit-row">
+    <div class="kit-row reveal">
       <h3>ML &amp; computer vision</h3>
       <p>PyTorch, TensorFlow, scikit-learn, OpenCV, YOLOv8, ByteTrack, Pandas, NumPy, model evaluation and hyperparameter tuning.</p>
     </div>
-    <div class="kit-row">
+    <div class="kit-row reveal">
       <h3>Data &amp; analytics</h3>
       <p>KNIME, Apache Superset, ETL pipeline design, data visualisation, Google Analytics 4, Excel.</p>
     </div>
-    <div class="kit-row">
+    <div class="kit-row reveal">
       <h3>Cloud &amp; databases</h3>
       <p>AWS and AWS Bedrock, Azure, Oracle Cloud Infrastructure, PostgreSQL, MSSQL, MongoDB.</p>
     </div>
-    <div class="kit-row">
+    <div class="kit-row reveal">
       <h3>Engineering</h3>
       <p>FastAPI, Flask, React, Docker, Git and GitHub, Linux/CLI, Playwright, Selenium, Zoho CRM.</p>
     </div>
@@ -553,7 +644,7 @@ a{color:inherit}
 </section>
 
 <section class="bay shell" id="background">
-  <div class="bay-head">
+  <div class="bay-head reveal">
     <h2>Background</h2>
     <span class="hair"></span>
   </div>
@@ -561,11 +652,11 @@ a{color:inherit}
   <div class="ledger">
     <div>
       <h3>Education</h3>
-      <div class="item">
+      <div class="item reveal">
         <b>B.Tech, Computer Science &amp; Engineering</b>
         <span>Ahmedabad University · Aug 2021 — May 2025</span>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <b>200+ problems solved on LeetCode</b>
         <span>Including a 100 Days badge</span>
         <a href="https://leetcode.com/u/parthjoshi2416/" target="_blank" rel="noopener">View profile</a>
@@ -574,28 +665,28 @@ a{color:inherit}
 
     <div>
       <h3>Certifications</h3>
-      <div class="item">
+      <div class="item reveal">
         <b>Claude Certified Architect — Foundations</b>
         <span>Anthropic</span>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <b>AWS Certified AI Practitioner</b>
         <span>Amazon Web Services</span>
         <a href="https://www.credly.com/badges/7d829f9f-b6c2-427a-a8a5-bcd850035756" target="_blank" rel="noopener">Verify on Credly</a>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <b>OCI 2025 Data Science Professional</b>
         <span>Oracle Cloud Infrastructure</span>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <b>OCI 2025 Generative AI Professional</b>
         <span>Oracle Cloud Infrastructure</span>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <b>KNIME L2 Analytics Platform</b>
         <span>KNIME</span>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <b>Introduction to TensorFlow for AI, ML and Deep Learning</b>
         <span>DeepLearning.AI on Coursera</span>
         <a href="https://coursera.org/share/5fbafad447e75c7039272c390ed574c4" target="_blank" rel="noopener">Verify on Coursera</a>
@@ -639,20 +730,46 @@ a{color:inherit}
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 <script>
 (function(){
   var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
   var cards = Array.prototype.slice.call(document.querySelectorAll('#works .work'));
   var tally = document.getElementById('tally');
 
+  var canAnimate = typeof gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function apply(area){
     var shown = 0;
+    var entering = [];
     cards.forEach(function(card){
       var areas = (card.getAttribute('data-area') || '').split(' ');
       var match = area === 'all' || areas.indexOf(area) !== -1;
-      card.hidden = !match;
       if (match) shown++;
+
+      if (!canAnimate){
+        card.hidden = !match;
+        return;
+      }
+
+      if (match && card.hidden){
+        card.hidden = false;
+        gsap.set(card, {opacity:0, scale:.94});
+        entering.push(card);
+      } else if (match){
+        gsap.set(card, {opacity:1, scale:1});
+      } else if (!match && !card.hidden){
+        gsap.to(card, {opacity:0, scale:.94, duration:.22, ease:'power1.in', onComplete:function(){ card.hidden = true; }});
+      } else {
+        card.hidden = true;
+      }
     });
+    if (canAnimate && entering.length){
+      gsap.to(entering, {opacity:1, scale:1, duration:.35, ease:'power2.out', stagger:.05, delay:.05});
+    }
     chips.forEach(function(chip){
       chip.setAttribute('aria-pressed', String(chip.getAttribute('data-area') === area));
     });
@@ -695,7 +812,316 @@ a{color:inherit}
   window.addEventListener('resize', update);
   update();
 })();
+
+/* ---- custom crosshair cursor ---- */
+(function(){
+  var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if (!fine) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('has-cursor');
+  var dot = document.querySelector('.cur-dot');
+  var ring = document.querySelector('.cur-ring');
+  var mx = -100, my = -100, rx = -100, ry = -100;
+
+  window.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+    if (reduce){
+      ring.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+    }
+  }, {passive:true});
+
+  if (!reduce){
+    (function loop(){
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  var targets = 'a,button,.chip,.work,input,textarea,[tabindex]';
+  document.addEventListener('mouseover', function(e){
+    if (e.target.closest(targets)) ring.classList.add('active');
+  });
+  document.addEventListener('mouseout', function(e){
+    if (e.target.closest(targets)) ring.classList.remove('active');
+  });
+})();
+
+/* ---- 3D tilt on project / impact cards ---- */
+(function(){
+  var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!fine || reduce) return;
+
+  document.querySelectorAll('.work').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transition = '';
+      card.style.transform = 'perspective(700px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 9).toFixed(2) + 'deg) translateZ(2px)';
+      card.style.setProperty('--glow-x', (px * 100 + 50) + '%');
+      card.style.setProperty('--glow-y', (py * 100 + 50) + '%');
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transition = 'transform .5s cubic-bezier(.2,.8,.3,1)';
+      card.style.transform = 'perspective(700px) rotateX(0) rotateY(0)';
+    });
+  });
+})();
+
+/* ---- magnetic buttons ---- */
+(function(){
+  var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!fine || reduce) return;
+
+  document.querySelectorAll('.btn').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var mx = e.clientX - (r.left + r.width / 2);
+      var my = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = 'translate(' + (mx * 0.25).toFixed(1) + 'px,' + (my * 0.25).toFixed(1) + 'px)';
+    });
+    btn.addEventListener('mouseleave', function(){
+      btn.style.transform = '';
+    });
+  });
+})();
+
+/* ---- live "confidence score" tied to cursor proximity ---- */
+(function(){
+  var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var label = document.querySelector('.classlabel');
+  var frame = document.querySelector('.hero-frame.detect');
+  if (!fine || !label || !frame) return;
+
+  window.addEventListener('mousemove', function(e){
+    var r = frame.getBoundingClientRect();
+    var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    var dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+    var maxDist = Math.max(window.innerWidth, window.innerHeight) / 2;
+    var norm = Math.min(dist / maxDist, 1);
+    var conf = (0.99 - norm * 0.15).toFixed(2);
+    label.innerHTML = 'ai/ml engineer&nbsp; ' + conf;
+  }, {passive:true});
+})();
+
+/* ---- GSAP ScrollTrigger reveals + counting stats ---- */
+(function(){
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.documentElement.classList.add('gsap-ready');
+  gsap.registerPlugin(ScrollTrigger);
+
+  ScrollTrigger.batch('.reveal', {
+    start: 'top 88%',
+    once: true,
+    onEnter: function(batch){
+      gsap.to(batch, {opacity:1, y:0, duration:.7, ease:'power2.out', stagger:.08});
+    }
+  });
+
+  document.querySelectorAll('.stat b').forEach(function(el){
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([\d.]+)(.*)$/);
+    if (!m) return;
+    var end = parseFloat(m[1]);
+    var suffix = m[2];
+    var decimals = (m[1].split('.')[1] || '').length;
+    var obj = {val:0};
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 90%',
+      once: true,
+      onEnter: function(){
+        gsap.to(obj, {
+          val: end, duration: 1.5, ease: 'power2.out',
+          onUpdate: function(){ el.textContent = obj.val.toFixed(decimals) + suffix; }
+        });
+      }
+    });
+  });
+})();
+
+/* ---- Three.js hero scene: a detection-graph of drifting, linked nodes ---- */
+(function(){
+  var canvas = document.getElementById('scene-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var wrap = canvas.closest('.hero-wrap');
+
+  var renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.z = 9;
+
+  var group = new THREE.Group();
+  scene.add(group);
+
+  var COUNT = window.innerWidth < 700 ? 34 : 80;
+  var SPREAD = {x:9, y:5, z:4};
+  var signal = new THREE.Color(0xC11A52);
+  var pine = new THREE.Color(0x2E6B5E);
+  var ink = new THREE.Color(0x17231F);
+
+  var positions = new Float32Array(COUNT * 3);
+  var origins = new Float32Array(COUNT * 3);
+  var phases = new Float32Array(COUNT);
+  var colors = new Float32Array(COUNT * 3);
+
+  for (var i = 0; i < COUNT; i++){
+    var x = (Math.random() * 2 - 1) * SPREAD.x;
+    var y = (Math.random() * 2 - 1) * SPREAD.y;
+    var z = (Math.random() * 2 - 1) * SPREAD.z;
+    positions[i*3] = origins[i*3] = x;
+    positions[i*3+1] = origins[i*3+1] = y;
+    positions[i*3+2] = origins[i*3+2] = z;
+    phases[i] = Math.random() * Math.PI * 2;
+    var c = Math.random() < 0.5 ? signal : (Math.random() < 0.5 ? pine : ink);
+    colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+  }
+
+  var pointsGeo = new THREE.BufferGeometry();
+  pointsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  pointsGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  var pointsMat = new THREE.PointsMaterial({size:0.09, vertexColors:true, transparent:true, opacity:0.85, sizeAttenuation:true});
+  var points = new THREE.Points(pointsGeo, pointsMat);
+  group.add(points);
+
+  var pairs = [];
+  var THRESH = 3.1;
+  for (var a = 0; a < COUNT; a++){
+    for (var b = a + 1; b < COUNT; b++){
+      var dx = origins[a*3]-origins[b*3], dy = origins[a*3+1]-origins[b*3+1], dz = origins[a*3+2]-origins[b*3+2];
+      if (Math.sqrt(dx*dx+dy*dy+dz*dz) < THRESH) pairs.push([a,b]);
+      if (pairs.length > 160) break;
+    }
+    if (pairs.length > 160) break;
+  }
+
+  var linePositions = new Float32Array(pairs.length * 6);
+  var lineColors = new Float32Array(pairs.length * 6);
+  for (var p = 0; p < pairs.length; p++){
+    var ia = pairs[p][0], ib = pairs[p][1];
+    for (var k = 0; k < 3; k++){
+      lineColors[p*6+k] = colors[ia*3+k];
+      lineColors[p*6+3+k] = colors[ib*3+k];
+    }
+  }
+  var lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+  lineGeo.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
+  var lineMat = new THREE.LineBasicMaterial({vertexColors:true, transparent:true, opacity:0.16});
+  var lines = new THREE.LineSegments(lineGeo, lineMat);
+  group.add(lines);
+
+  function resize(){
+    var w = wrap.clientWidth, h = wrap.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / Math.max(h, 1);
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  var mouseX = 0, mouseY = 0;
+  var mouseNDC = new THREE.Vector2(-10, -10);
+  var hasMouse = false;
+  var raycaster = new THREE.Raycaster();
+  var repelPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+  var repelWorld = new THREE.Vector3();
+  var repelLocal = new THREE.Vector3();
+
+  window.addEventListener('mousemove', function(e){
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+    var r = wrap.getBoundingClientRect();
+    if (e.clientY >= r.top && e.clientY <= r.bottom && e.clientX >= r.left && e.clientX <= r.right){
+      mouseNDC.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+      mouseNDC.y = -(((e.clientY - r.top) / r.height) * 2 - 1);
+      hasMouse = true;
+    } else {
+      hasMouse = false;
+    }
+  }, {passive:true});
+  window.addEventListener('mouseleave', function(){ hasMouse = false; });
+
+  var visible = true;
+  document.addEventListener('visibilitychange', function(){ visible = !document.hidden; });
+
+  var clock = new THREE.Clock();
+
+  function renderStatic(){
+    renderer.render(scene, camera);
+  }
+
+  if (reduce){
+    renderStatic();
+    return;
+  }
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if (!visible) return;
+    var t = clock.getElapsedTime();
+    var posAttr = pointsGeo.attributes.position;
+
+    var repelling = false;
+    if (hasMouse){
+      raycaster.setFromCamera(mouseNDC, camera);
+      if (raycaster.ray.intersectPlane(repelPlane, repelWorld)){
+        group.worldToLocal(repelLocal.copy(repelWorld));
+        repelling = true;
+      }
+    }
+
+    var REPEL_RADIUS = 2.6, REPEL_STRENGTH = 1.3;
+    for (var i = 0; i < COUNT; i++){
+      var bx = origins[i*3] + Math.cos(t * 0.3 + phases[i]) * 0.2;
+      var by = origins[i*3+1] + Math.sin(t * 0.4 + phases[i]) * 0.35;
+      var bz = origins[i*3+2];
+
+      if (repelling){
+        var dx = bx - repelLocal.x, dy = by - repelLocal.y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < REPEL_RADIUS && dist > 0.0001){
+          var push = (1 - dist / REPEL_RADIUS) * REPEL_STRENGTH;
+          bx += (dx / dist) * push;
+          by += (dy / dist) * push;
+        }
+      }
+
+      posAttr.array[i*3] = bx;
+      posAttr.array[i*3+1] = by;
+      posAttr.array[i*3+2] = bz;
+    }
+    posAttr.needsUpdate = true;
+
+    var lp = lineGeo.attributes.position.array;
+    for (var p2 = 0; p2 < pairs.length; p2++){
+      var ia2 = pairs[p2][0], ib2 = pairs[p2][1];
+      lp[p2*6] = posAttr.array[ia2*3]; lp[p2*6+1] = posAttr.array[ia2*3+1]; lp[p2*6+2] = posAttr.array[ia2*3+2];
+      lp[p2*6+3] = posAttr.array[ib2*3]; lp[p2*6+4] = posAttr.array[ib2*3+1]; lp[p2*6+5] = posAttr.array[ib2*3+2];
+    }
+    lineGeo.attributes.position.needsUpdate = true;
+
+    group.rotation.y += 0.0009;
+    camera.position.x += (mouseX * 1.4 - camera.position.x) * 0.03;
+    camera.position.y += (-mouseY * 0.9 - camera.position.y) * 0.03;
+    camera.lookAt(0,0,0);
+
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
 </script>
 
 </body>
 </html>
+```
