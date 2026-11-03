@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +6,27 @@
 <title>Parth Joshi — AI/ML Engineer</title>
 <meta name="description" content="Software engineer at Cygnet.One building agentic AI, LLM systems, data pipelines and computer vision. Ahmedabad, India.">
 <meta name="author" content="Parth Joshi">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0E1512">
+<script>
+/* set theme before first paint: saved choice, else dark (night mode is the default) */
+(function(){var t='dark';try{var s=localStorage.getItem('pj-theme');if(s==='light'||s==='dark')t=s;}catch(e){}document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Parth Joshi","image":"parth-joshi.jpg","jobTitle":"Software Engineer — AI/ML","worksFor":{"@type":"Organization","name":"Cygnet.One"},"address":{"@type":"PostalAddress","addressLocality":"Ahmedabad","addressCountry":"IN"},"alumniOf":"Ahmedabad University","email":"mailto:parthjoshi2416@gmail.com","sameAs":["https://www.linkedin.com/in/parth-joshi4","https://github.com/Parth0404","https://leetcode.com/u/parthjoshi2416/"]}
+</script>
 <meta property="og:title" content="Parth Joshi — AI/ML Engineer">
 <meta property="og:description" content="Agentic AI, LLM systems, data pipelines and computer vision. Ahmedabad, India.">
 <meta property="og:type" content="profile">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Parth Joshi — AI/ML Engineer. Agentic AI, LLM systems, computer vision.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Parth Joshi — AI/ML Engineer">
+<meta name="twitter:description" content="Agentic AI, LLM systems, data pipelines and computer vision. Ahmedabad, India.">
+<meta name="twitter:image" content="og-image.jpg">
+<link rel="preload" as="image" href="parth-joshi.webp" type="image/webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E6EAE3'/%3E%3Cpath d='M7 12V7h5M25 12V7h-5M7 20v5h5M25 20v5h-5' fill='none' stroke='%23C11A52' stroke-width='2.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +39,15 @@
   --muted:#55645B;
   --rule:#C3CCBC;
   --signal:#C11A52;
+  --signal-fill:#C11A52;
   --pine:#2E6B5E;
+  --shadow:#17231F;
+  --hl:rgba(255,255,255,.55);
+  --close-bg:#17231F;
+  --close-ink:#E6EAE3;
+  --close-muted:#BEC8C0;
+  --close-rule:#33433C;
+  --close-faint:#8D9A92;
 
   --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
   --prose:"Newsreader",Georgia,"Times New Roman",serif;
@@ -30,7 +55,29 @@
   --measure:66ch;
   --gutter:clamp(1.25rem,5vw,4.5rem);
   --bay:clamp(3.5rem,9vw,7rem);
+  color-scheme:light;
 }
+/* night mode (default) */
+:root[data-theme="dark"]{
+  --ground:#0E1512;
+  --panel:#151F1B;
+  --ink:#E3E9E1;
+  --muted:#98A79E;
+  --rule:#2B3A33;
+  --signal:#F2508A;
+  --signal-fill:#D02A63;
+  --pine:#62B8A5;
+  --shadow:#000000;
+  --hl:rgba(255,255,255,.07);
+  --close-bg:#080D0B;
+  --close-ink:#E3E9E1;
+  --close-muted:#A9B5AE;
+  --close-rule:#22302A;
+  --close-faint:#7F8D85;
+  color-scheme:dark;
+}
+/* smooth cross-fade only while the theme is being switched */
+html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{transition:background-color .35s ease,border-color .35s ease,color .35s ease,fill .35s ease !important}
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -60,13 +107,13 @@ a{color:inherit}
 @media (max-width:700px){.masthead nav{display:none}}
 
 /* detection frame */
-.detect{position:relative;display:inline-block;padding:clamp(1.5rem,4vw,2.75rem) clamp(1.25rem,4vw,3rem);filter:drop-shadow(0 6px 10px rgba(23,35,31,.10))}
-.detect .bracket{position:absolute;width:clamp(20px,4vw,38px);height:clamp(20px,4vw,38px);border:2.5px solid var(--signal);border-radius:1.5px;box-shadow:1.5px 2px 0 rgba(23,35,31,.16),inset 0 1px 0 rgba(255,255,255,.55)}
+.detect{position:relative;display:inline-block;padding:clamp(1.5rem,4vw,2.75rem) clamp(1.25rem,4vw,3rem);filter:drop-shadow(0 6px 10px color-mix(in srgb,var(--shadow) 12%,transparent))}
+.detect .bracket{position:absolute;width:clamp(20px,4vw,38px);height:clamp(20px,4vw,38px);border:2.5px solid var(--signal);border-radius:1.5px;box-shadow:1.5px 2px 0 color-mix(in srgb,var(--shadow) 18%,transparent),inset 0 1px 0 var(--hl)}
 .detect .tl{top:0;left:0;border-right:0;border-bottom:0}
 .detect .tr{top:0;right:0;border-left:0;border-bottom:0}
 .detect .bl{bottom:0;left:0;border-right:0;border-top:0}
 .detect .br{bottom:0;right:0;border-left:0;border-top:0}
-.classlabel{position:absolute;top:-1.55rem;left:-2px;background:linear-gradient(155deg,color-mix(in srgb,var(--signal) 100%,white 8%),var(--signal) 65%);color:#fff;font-family:var(--display);font-weight:600;font-size:.75rem;padding:.18rem .55rem;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 5px rgba(193,26,82,.35),0 1px 0 rgba(255,255,255,.25) inset;border-radius:1.5px 3px 3px 1.5px}
+.classlabel{position:absolute;top:-1.55rem;left:-2px;background:linear-gradient(155deg,color-mix(in srgb,var(--signal-fill) 92%,white 8%),var(--signal-fill) 65%);color:#fff;font-family:var(--display);font-weight:600;font-size:.75rem;padding:.18rem .55rem;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 5px color-mix(in srgb,var(--signal-fill) 35%,transparent),0 1px 0 rgba(255,255,255,.25) inset;border-radius:1.5px 3px 3px 1.5px}
 
 /* hero */
 .hero-wrap{position:relative;overflow:hidden;isolation:isolate}
@@ -90,14 +137,14 @@ a{color:inherit}
 /* -- shape: cube (a detection bounding-volume) -- */
 .scene--cube{--size:clamp(120px,15vw,190px)}
 .cube{position:relative;width:100%;height:100%;transform-style:preserve-3d}
-.cube .face{position:absolute;inset:0;border:1.25px solid var(--rule);background:color-mix(in srgb,var(--panel) 82%,transparent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.cube .face{position:absolute;inset:0;border:1.25px solid var(--rule);background:color-mix(in srgb,var(--panel) 82%,transparent);box-shadow:inset 0 0 0 1px var(--hl)}
 .cube .front{border-color:var(--signal);background:color-mix(in srgb,var(--signal) 6%,var(--panel) 84%);transform:translateZ(calc(var(--size) / 2))}
 .cube .back{transform:rotateY(180deg) translateZ(calc(var(--size) / 2))}
 .cube .right{border-color:var(--pine);transform:rotateY(90deg) translateZ(calc(var(--size) / 2))}
 .cube .left{transform:rotateY(-90deg) translateZ(calc(var(--size) / 2))}
 .cube .top{transform:rotateX(90deg) translateZ(calc(var(--size) / 2))}
 .cube .bottom{transform:rotateX(-90deg) translateZ(calc(var(--size) / 2))}
-.cube .tag{position:absolute;top:-1.35rem;left:-1px;background:var(--signal);color:#fff;font-family:var(--display);font-weight:600;font-size:.6875rem;padding:.14rem .4rem;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 5px rgba(193,26,82,.3)}
+.cube .tag{position:absolute;top:-1.35rem;left:-1px;background:var(--signal-fill);color:#fff;font-family:var(--display);font-weight:600;font-size:.6875rem;padding:.14rem .4rem;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 5px color-mix(in srgb,var(--signal-fill) 30%,transparent)}
 .cube .pip{position:absolute;width:6px;height:6px;background:var(--signal);border-radius:50%;box-shadow:0 0 0 3px color-mix(in srgb,var(--signal) 18%,transparent)}
 .cube .front .pip{top:-3px;left:-3px}
 .cube.wire .face{background:transparent;border-color:rgba(255,255,255,.3);box-shadow:none}
@@ -150,8 +197,8 @@ a{color:inherit}
 .actions{display:flex;flex-wrap:wrap;gap:.6rem}
 .btn{font-family:var(--display);font-weight:600;font-size:.9375rem;text-decoration:none;padding:.72rem 1.15rem;border:1.5px solid var(--ink);display:inline-flex;align-items:center;gap:.5rem;transition:background .15s ease,color .15s ease,transform .15s ease-out}
 .btn:hover{background:var(--ink);color:var(--ground)}
-.btn.primary{background:var(--signal);border-color:var(--signal);color:#fff}
-.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn.primary{background:var(--signal-fill);border-color:var(--signal-fill);color:#fff}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--ground)}
 .btn svg{width:1em;height:1em;flex:none}
 
 /* evidence band */
@@ -226,7 +273,7 @@ a{color:inherit}
 .tools{display:flex;flex-wrap:wrap;gap:.28rem .32rem}
 .tool{font-family:var(--display);font-size:.71875rem;font-weight:500;color:var(--muted);border:1px solid var(--rule);padding:.15rem .42rem;background:var(--ground)}
 .srclink{display:inline-block;margin-top:.7rem;font-family:var(--display);font-size:.84375rem;font-weight:600;text-decoration:none;box-shadow:inset 0 -1.5px 0 var(--signal);padding-bottom:1px}
-.srclink:hover{background:var(--signal);color:#fff;box-shadow:none}
+.srclink:hover{background:var(--signal-fill);color:#fff;box-shadow:none}
 
 /* skills */
 .kit{display:grid;border-top:1px solid var(--rule)}
@@ -243,23 +290,88 @@ a{color:inherit}
 .ledger .item b{font-family:var(--display);font-weight:600;font-size:1.03125rem;display:block;letter-spacing:-0.012em}
 .ledger .item span{display:block;color:var(--muted);font-size:.9375rem;margin-top:.15rem}
 .ledger .item a{font-family:var(--display);font-size:.8125rem;font-weight:600;text-decoration:none;box-shadow:inset 0 -1.5px 0 var(--signal);display:inline-block;margin-top:.3rem}
-.ledger .item a:hover{background:var(--signal);color:#fff;box-shadow:none}
+.ledger .item a:hover{background:var(--signal-fill);color:#fff;box-shadow:none}
 
 .scene--wire{--size:76px}
 
 /* close */
-.close{background:var(--ink);color:var(--ground);border-top:3px solid var(--signal)}
+.close{background:var(--close-bg);color:var(--close-ink);border-top:3px solid var(--signal-fill)}
 .close .shell{padding-block:var(--bay)}
 .close-top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
 .close h2{font-size:clamp(1.9rem,6vw,3.4rem);letter-spacing:-0.04em;max-width:16ch}
-.close p{max-width:46ch;color:#BEC8C0;margin:1.1rem 0 2.25rem;font-size:1.125rem}
-.close .btn{border-color:var(--ground);color:var(--ground)}
-.close .btn:hover{background:var(--ground);color:var(--ink)}
-.close .btn.primary{background:var(--signal);border-color:var(--signal);color:#fff}
-.close .btn.primary:hover{background:var(--ground);border-color:var(--ground);color:var(--ink)}
-.colophon{border-top:1px solid #33433C;margin-top:clamp(3rem,7vw,5rem);padding-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;font-family:var(--display);font-size:.8125rem;color:#8D9A92}
-.colophon a{color:#BEC8C0;text-decoration:none}
-.colophon a:hover{color:#fff}
+.close p{max-width:46ch;color:var(--close-muted);margin:1.1rem 0 2.25rem;font-size:1.125rem}
+.close .btn{border-color:var(--close-ink);color:var(--close-ink)}
+.close .btn:hover{background:var(--close-ink);color:var(--close-bg)}
+.close .btn.primary{background:var(--signal-fill);border-color:var(--signal-fill);color:#fff}
+.close .btn.primary:hover{background:var(--close-ink);border-color:var(--close-ink);color:var(--close-bg)}
+.colophon{border-top:1px solid var(--close-rule);margin-top:clamp(3rem,7vw,5rem);padding-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;font-family:var(--display);font-size:.8125rem;color:var(--close-faint)}
+.colophon a{color:var(--close-muted);text-decoration:none}
+.colophon a:hover{color:var(--close-ink)}
+
+/* hero portrait */
+.portrait{margin:0;padding:clamp(.7rem,1.4vw,1rem);width:clamp(210px,25vw,300px);flex:none}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:720/803;object-fit:cover;background:var(--panel);filter:saturate(.96)}
+.portrait .classlabel{top:-1.45rem;left:.6rem}
+@media (max-width:640px){
+  .hero-top{gap:2.75rem}
+  .portrait{order:-1;width:150px;margin-top:1.25rem}
+}
+
+/* contact form */
+.contact-grid{display:grid;gap:clamp(2rem,5vw,4rem);grid-template-columns:1fr;align-items:start}
+@media (min-width:900px){.contact-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.contact-intro p{margin-top:1.1rem}
+.cform{display:grid;gap:1rem;margin-top:1.1rem;background:color-mix(in srgb,var(--close-ink) 4%,transparent);border:1px solid var(--close-rule);padding:clamp(1.25rem,3vw,1.9rem);position:relative}
+.cform::before,.cform::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--signal)}
+.cform::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.cform::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.frow{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:520px){.frow{grid-template-columns:1fr 1fr}}
+.field{display:grid;gap:.4rem}
+.field label{font-family:var(--display);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--close-muted)}
+.field input,.field select,.field textarea{font:inherit;font-family:var(--prose);font-size:1rem;color:var(--close-ink);background:color-mix(in srgb,var(--close-bg) 70%,black 10%);border:1.5px solid var(--close-rule);border-radius:0;padding:.7rem .8rem;width:100%;transition:border-color .15s ease,box-shadow .15s ease}
+.field textarea{resize:vertical;min-height:7.5rem}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2398A79E' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .7rem center;background-size:1rem;padding-right:2.4rem}
+.field select option{background:var(--close-bg);color:var(--close-ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--signal);box-shadow:0 0 0 3px color-mix(in srgb,var(--signal) 22%,transparent)}
+.field.invalid input,.field.invalid textarea{border-color:var(--signal)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fsubmit{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.cform .btn.primary{border:1.5px solid var(--signal-fill);cursor:pointer}
+.cform .btn.primary[disabled]{opacity:.6;cursor:progress}
+.fstatus{margin:0 !important;font-family:var(--display);font-size:.875rem;font-weight:600;color:var(--close-muted) !important;max-width:none !important}
+.fstatus.ok{color:#62B8A5 !important}
+.fstatus.err{color:#F2508A !important}
+
+/* masthead controls: theme toggle + mobile menu */
+.mast-right{display:flex;align-items:center;gap:1.25rem}
+.icon-btn{display:inline-grid;place-items:center;width:2.25rem;height:2.25rem;border:1.5px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;padding:0;transition:border-color .15s ease,background .15s ease}
+.icon-btn:hover{border-color:var(--ink)}
+.icon-btn svg{width:1.05rem;height:1.05rem}
+.theme-toggle .sun{display:none}
+:root[data-theme="dark"] .theme-toggle .sun{display:block}
+:root[data-theme="dark"] .theme-toggle .moon{display:none}
+.menu-toggle{display:none}
+.masthead nav a[aria-current="true"]{color:var(--ink);box-shadow:inset 0 -1.5px 0 var(--signal)}
+@media (max-width:700px){
+  .menu-toggle{display:inline-grid}
+  .masthead nav.open{display:flex;flex-direction:column;gap:0;position:absolute;top:3.75rem;left:0;right:0;background:var(--ground);border-bottom:1px solid var(--rule);padding:.5rem var(--gutter) 1rem;box-shadow:0 12px 24px color-mix(in srgb,var(--shadow) 18%,transparent)}
+  .masthead nav.open a{padding-block:.8rem;border-bottom:1px solid var(--rule);font-size:1rem}
+  .masthead nav.open a:last-child{border-bottom:0}
+}
+.menu-toggle .x{display:none}
+.menu-toggle[aria-expanded="true"] .x{display:block}
+.menu-toggle[aria-expanded="true"] .bars{display:none}
+
+/* scroll progress */
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--signal);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+
+/* back to top + toast */
+.to-top{position:fixed;right:clamp(1rem,3vw,1.75rem);bottom:clamp(1rem,3vw,1.75rem);z-index:40;background:var(--panel);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s,border-color .15s ease}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.toast{position:fixed;left:50%;bottom:1.5rem;z-index:70;transform:translate(-50%,12px);background:var(--ink);color:var(--ground);font-family:var(--display);font-weight:600;font-size:.875rem;padding:.6rem 1rem;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.btn.copy{cursor:pointer;background:transparent;font:inherit;font-family:var(--display);font-weight:600;font-size:.9375rem}
 
 /* custom cursor */
 html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor .chip{cursor:none}
@@ -299,15 +411,27 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
 <header class="masthead">
   <div class="shell">
     <a class="wordmark" href="#top">Parth Joshi</a>
-    <nav aria-label="Sections">
+    <nav aria-label="Sections" id="site-nav">
       <a href="#why">Why me</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
-      <a href="resume.pdf" download="Parth-Joshi-Resume.pdf">Resume</a>
+      <a href="#background">Background</a>
+      <a href="ParthJoshi_Resume.pdf" download="Parth-Joshi-Resume.pdf">Resume</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="mast-right">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch to light mode" title="Toggle light / dark">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
   </div>
+  <span class="progress" aria-hidden="true"></span>
 </header>
 
 <main id="main">
@@ -324,18 +448,15 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
       <p class="role">Agentic AI, LLM systems, computer vision</p>
     </div>
 
-    <div class="scene scene--cube" aria-hidden="true">
-      <div class="rig" data-amp="12">
-        <div class="cube">
-          <div class="face front"><span class="pip"></span><span class="tag">0.94</span></div>
-          <div class="face back"></div>
-          <div class="face right"></div>
-          <div class="face left"></div>
-          <div class="face top"></div>
-          <div class="face bottom"></div>
-        </div>
-      </div>
-    </div>
+    <figure class="portrait detect">
+      <span class="classlabel">person &nbsp;0.99</span>
+      <span class="bracket tl"></span><span class="bracket tr"></span>
+      <span class="bracket bl"></span><span class="bracket br"></span>
+      <picture>
+        <source srcset="parth-joshi.webp" type="image/webp">
+        <img src="parth-joshi.jpg" width="720" height="803" alt="Portrait of Parth Joshi" fetchpriority="high" decoding="async">
+      </picture>
+    </figure>
   </div>
 
   <p class="lede">Software engineer at Cygnet.One. I ship <em>AI agents that do real work</em> — invoice classification, enterprise data querying, autonomous testing — plus the data pipelines and vision models underneath them.</p>
@@ -345,7 +466,7 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16"/><path d="m2 6 10 7L22 6"/></svg>
       Email me
     </a>
-    <a class="btn" href="resume.pdf" download="Parth-Joshi-Resume.pdf">
+    <a class="btn" href="ParthJoshi_Resume.pdf" download="Parth-Joshi-Resume.pdf">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
       Resume
     </a>
@@ -714,27 +835,225 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
         </div>
       </div>
     </div>
-    <p>Based in Ahmedabad, working on agentic AI at Cygnet.One. Happy to discuss LLM systems, data engineering or computer vision work — I reply to email the same day.</p>
+    <div class="contact-grid">
+    <div class="contact-intro">
+    <p>Based in Ahmedabad, working on agentic AI at Cygnet.One. Happy to discuss LLM systems, data engineering or computer vision work — I reply the same day.</p>
     <div class="actions">
       <a class="btn primary" href="mailto:parthjoshi2416@gmail.com">parthjoshi2416@gmail.com</a>
+      <button class="btn copy" type="button" data-copy="parthjoshi2416@gmail.com">Copy email</button>
       <a class="btn" href="tel:+917778923074">+91 77789 23074</a>
-      <a class="btn" href="resume.pdf" download="Parth-Joshi-Resume.pdf">Download resume</a>
+      <a class="btn" href="ParthJoshi_Resume.pdf" download="Parth-Joshi-Resume.pdf">Download resume</a>
       <a class="btn" href="https://www.linkedin.com/in/parth-joshi4" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://github.com/Parth0404" target="_blank" rel="noopener">GitHub</a>
     </div>
+    </div>
+
+    <!-- Contact form: posts to Web3Forms. Get a free access key at https://web3forms.com
+         (enter parthjoshi2416@gmail.com, the key is emailed instantly) and paste it below.
+         Until then the form falls back to opening the visitor's email app, pre-filled. -->
+    <form class="cform" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New message from your portfolio">
+      <input type="hidden" name="from_name" value="Portfolio contact form">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="frow">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100">
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="150">
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-topic">What's it about?</label>
+        <select id="cf-topic" name="topic">
+          <option>Job opportunity</option>
+          <option>Freelance or contract work</option>
+          <option>Research or collaboration</option>
+          <option>Just saying hi</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cf-msg">Message</label>
+        <textarea id="cf-msg" name="message" rows="5" required maxlength="4000"></textarea>
+      </div>
+      <div class="fsubmit">
+        <button class="btn primary" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
+          Send message
+        </button>
+        <p class="fstatus" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+    </div>
 
     <div class="colophon">
-      <span>Parth Joshi — Ahmedabad, Gujarat, India</span>
+      <span>© <span id="year">2026</span> Parth Joshi — Ahmedabad, Gujarat, India</span>
       <span><a href="mailto:parthjoshi2416@gmail.com">parthjoshi2416@gmail.com</a></span>
     </div>
   </div>
 </footer>
+
+<button class="icon-btn to-top" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<div class="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
+/* ---- theme toggle (dark default, choice remembered) ---- */
+(function(){
+  var root = document.documentElement;
+  var btn = document.querySelector('.theme-toggle');
+  var meta = document.querySelector('meta[name="theme-color"]');
+  function sync(){
+    var dark = root.getAttribute('data-theme') === 'dark';
+    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    meta.setAttribute('content', dark ? '#0E1512' : '#E6EAE3');
+  }
+  sync();
+  btn.addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.classList.add('theme-anim');
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('pj-theme', next); } catch(e){}
+    sync();
+    window.dispatchEvent(new CustomEvent('themechange', {detail:next}));
+    setTimeout(function(){ root.classList.remove('theme-anim'); }, 400);
+  });
+})();
+
+/* ---- mobile menu ---- */
+(function(){
+  var btn = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  function set(open){
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.addEventListener('click', function(){ set(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function(e){ if (e.target.closest('a')) set(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') set(false); });
+  window.addEventListener('resize', function(){ if (window.innerWidth > 700) set(false); });
+})();
+
+/* ---- scroll progress, back-to-top, active section in nav ---- */
+(function(){
+  var bar = document.querySelector('.progress');
+  var top = document.querySelector('.to-top');
+  var ticking = false;
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var y = window.scrollY || window.pageYOffset;
+    bar.style.setProperty('--p', h > 0 ? Math.min(y / h, 1) : 0);
+    top.classList.toggle('show', y > window.innerHeight * 0.9);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if (!ticking){ requestAnimationFrame(onScroll); ticking = true; } }, {passive:true});
+  onScroll();
+  top.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  });
+
+  if (!('IntersectionObserver' in window)) return;
+  var links = {};
+  document.querySelectorAll('#site-nav a[href^="#"]').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      Object.keys(links).forEach(function(id){ links[id].removeAttribute('aria-current'); });
+      if (links[en.target.id]) links[en.target.id].setAttribute('aria-current', 'true');
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(links).forEach(function(id){ var el = document.getElementById(id); if (el) io.observe(el); });
+  var hero = document.getElementById('top'); if (hero) io.observe(hero);
+})();
+
+/* ---- contact form ---- */
+(function(){
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = form.querySelector('.fstatus');
+  var btn = form.querySelector('button[type="submit"]');
+  var EMAIL = 'parthjoshi2416@gmail.com';
+  function msg(t, cls){ status.textContent = t; status.className = 'fstatus' + (cls ? ' ' + cls : ''); }
+
+  form.addEventListener('input', function(e){
+    var f = e.target.closest('.field'); if (f) f.classList.remove('invalid');
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = null;
+    ['name','email','message'].forEach(function(n){
+      var el = form.elements[n];
+      var ok = el.value.trim() !== '' && (n !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));
+      el.closest('.field').classList.toggle('invalid', !ok);
+      el.setAttribute('aria-invalid', String(!ok));
+      if (!ok && !bad) bad = el;
+    });
+    if (bad){ msg('Please fill in your name, a valid email and a message.', 'err'); bad.focus(); return; }
+    if (form.elements.botcheck.checked) return;
+
+    var data = {
+      name: form.elements.name.value.trim(),
+      email: form.elements.email.value.trim(),
+      topic: form.elements.topic.value,
+      message: form.elements.message.value.trim()
+    };
+    var key = form.elements.access_key.value;
+
+    // No form service configured yet: hand off to the visitor's email app instead.
+    if (!key || key.indexOf('YOUR_') === 0){
+      var body = data.message + '\n\n— ' + data.name + ' (' + data.email + ')';
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(data.topic + ' — from ' + data.name) + '&body=' + encodeURIComponent(body);
+      msg('Opening your email app…');
+      return;
+    }
+
+    btn.disabled = true; msg('Sending…');
+    fetch(form.action, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify({
+        access_key: key,
+        subject: data.topic + ' — ' + data.name,
+        from_name: form.elements.from_name.value,
+        name: data.name, email: data.email, replyto: data.email,
+        topic: data.topic, message: data.message, botcheck: false
+      })
+    }).then(function(r){ return r.json().then(function(j){ return {ok: r.ok && j.success, j: j}; }); })
+      .then(function(res){
+        if (res.ok){ form.reset(); msg('Thanks — your message is in. I\'ll reply soon.', 'ok'); }
+        else { msg('That didn\'t go through. Please email ' + EMAIL + ' directly.', 'err'); }
+      })
+      .catch(function(){ msg('Network error. Please email ' + EMAIL + ' directly.', 'err'); })
+      .then(function(){ btn.disabled = false; });
+  });
+})();
+
+/* ---- copy email + year ---- */
+(function(){
+  var toast = document.querySelector('.toast'), t;
+  function say(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(t); t = setTimeout(function(){ toast.classList.remove('show'); }, 1800); }
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var v = b.getAttribute('data-copy');
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(v).then(function(){ say('Email copied'); }, function(){ say(v); });
+      } else { say(v); }
+    });
+  });
+  var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+})();
+
 (function(){
   var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
   var cards = Array.prototype.slice.call(document.querySelectorAll('#works .work'));
@@ -968,7 +1287,12 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
   var SPREAD = {x:9, y:5, z:4};
   var signal = new THREE.Color(0xC11A52);
   var pine = new THREE.Color(0x2E6B5E);
+  var PALETTES = {
+    light: {signal:0xC11A52, pine:0x2E6B5E, ink:0x17231F, line:0.16, dot:0.85},
+    dark:  {signal:0xF2508A, pine:0x62B8A5, ink:0xC9D3CB, line:0.22, dot:0.9}
+  };
   var ink = new THREE.Color(0x17231F);
+  var kinds = new Uint8Array(COUNT); // 0 signal, 1 pine, 2 ink
 
   var positions = new Float32Array(COUNT * 3);
   var origins = new Float32Array(COUNT * 3);
@@ -983,14 +1307,25 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
     positions[i*3+1] = origins[i*3+1] = y;
     positions[i*3+2] = origins[i*3+2] = z;
     phases[i] = Math.random() * Math.PI * 2;
-    var c = Math.random() < 0.5 ? signal : (Math.random() < 0.5 ? pine : ink);
-    colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+    kinds[i] = Math.random() < 0.5 ? 0 : (Math.random() < 0.5 ? 1 : 2);
   }
+
+  function paint(theme){
+    var pal = PALETTES[theme] || PALETTES.dark;
+    signal.setHex(pal.signal); pine.setHex(pal.pine); ink.setHex(pal.ink);
+    var set = [signal, pine, ink];
+    for (var i = 0; i < COUNT; i++){
+      var c = set[kinds[i]];
+      colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+    }
+    return pal;
+  }
+  var pal0 = paint(document.documentElement.getAttribute('data-theme'));
 
   var pointsGeo = new THREE.BufferGeometry();
   pointsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   pointsGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  var pointsMat = new THREE.PointsMaterial({size:0.09, vertexColors:true, transparent:true, opacity:0.85, sizeAttenuation:true});
+  var pointsMat = new THREE.PointsMaterial({size:0.09, vertexColors:true, transparent:true, opacity:pal0.dot, sizeAttenuation:true});
   var points = new THREE.Points(pointsGeo, pointsMat);
   group.add(points);
 
@@ -1017,9 +1352,27 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
   var lineGeo = new THREE.BufferGeometry();
   lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
   lineGeo.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
-  var lineMat = new THREE.LineBasicMaterial({vertexColors:true, transparent:true, opacity:0.16});
+  var lineMat = new THREE.LineBasicMaterial({vertexColors:true, transparent:true, opacity:pal0.line});
   var lines = new THREE.LineSegments(lineGeo, lineMat);
   group.add(lines);
+
+  function syncLineColors(){
+    for (var p = 0; p < pairs.length; p++){
+      var ia = pairs[p][0], ib = pairs[p][1];
+      for (var k = 0; k < 3; k++){
+        lineColors[p*6+k] = colors[ia*3+k];
+        lineColors[p*6+3+k] = colors[ib*3+k];
+      }
+    }
+    lineGeo.attributes.color.needsUpdate = true;
+  }
+  window.addEventListener('themechange', function(e){
+    var pal = paint(e.detail);
+    pointsGeo.attributes.color.needsUpdate = true;
+    syncLineColors();
+    pointsMat.opacity = pal.dot; lineMat.opacity = pal.line;
+    if (reduce) renderer.render(scene, camera);
+  });
 
   function resize(){
     var w = wrap.clientWidth, h = wrap.clientHeight;
@@ -1124,4 +1477,3 @@ html.gsap-ready .reveal{opacity:0;transform:translateY(28px)}
 
 </body>
 </html>
-```
